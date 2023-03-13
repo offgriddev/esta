@@ -40,6 +40,10 @@ Structural Changes:
 
 Since there is one linear path through each file, and two files added, the effort will have a complexity of 2.
 
+So now you can see that there is an element of code quality, style, and structural thinking required to make this estimate. It has an element of subjectivity because it's how _you_ would, and the objective measurement that you would give it.
+
+During estimation, if you do not align, aim for the implementation breakdown that has the lowest overall complexity.
+
 ## evaluation
 
 At checkin, running code metric analysis will answer what the actual result is. The system then begins to build a dataset around complexity and delivery time. Therefore, the estimates are validated and the delivery time becomes more apparent.
