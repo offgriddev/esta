@@ -1,4 +1,4 @@
-# estimation by code metric
+# estimation by code complexity
 
 For meaningful estimations, we need to rely on objective metrics. If we are to estimate in a meaninful way outside giving an estimation based on time to delivery, time being measured by hours / weeks / months. Therefore, subjective measurements cannot be the primary means of estimation for a development team as a concrete measurement is always required.
 
@@ -20,7 +20,9 @@ When answering this question, there are two sides we need to consider.
 If you receive a card with the following spec:
 
 `name`: Add CLI and Integration for X API
+
 `description`: Add a CLI and integration for X API.
+
 `acceptance criteria`:
 
 - add new cli command to pull back results from X API
