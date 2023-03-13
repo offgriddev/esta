@@ -1,0 +1,21 @@
+{
+  "name": "estautomate",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.3",
+  "type": "module",
+  "engines": {
+    "node": "^18"
+  },
+  "scripts": {
+    "cli": "node src/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "escomplex": "^2.0.0-alpha",
+    "ts-complex": "^1.0.0"
+  },
+  "bin": "src/index.js"
+}
