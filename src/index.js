@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
-import { gatherMetrics } from "./gather-metrics/index";
+import { gatherMetrics } from "./gather-metrics/index.js";
 
 const program = new Command()
   .name("estamaton")
@@ -9,4 +9,4 @@ const program = new Command()
   .description("A set of CLI tools to gather metrics on a codebase")
   .addCommand(gatherMetrics);
 
-program.parseAsync();
+await program.parseAsync();

@@ -9,8 +9,7 @@
     "node": "^18"
   },
   "scripts": {
-    "cli": "node src/index.js",
-    "build": "tsc"
+    "cli": "node src/index.js"
   },
   "dependencies": {
     "commander": "^10.0.0",
