@@ -1,7 +1,7 @@
 import { readdir } from "fs/promises";
 
 export const getSourceFile = async (folder, includedType, excludedType) => {
-  const filePaths = [];
+  let filePaths = [];
   // get contents for folder
   const paths = await readdir(folder, { withFileTypes: true });
   // check if item is a directory

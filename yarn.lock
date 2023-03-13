@@ -28,12 +28,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esprima@npm:*":
+  version: 4.0.1
+  resolution: "esprima@npm:4.0.1"
+  bin:
+    esparse: ./bin/esparse.js
+    esvalidate: ./bin/esvalidate.js
+  checksum: b45bc805a613dbea2835278c306b91aff6173c8d034223fa81498c77dcbce3b2931bf6006db816f62eacd9fd4ea975dfd85a5b7f3c6402cfd050d4ca3c13a628
+  languageName: node
+  linkType: hard
+
 "estautomate@workspace:.":
   version: 0.0.0-use.local
   resolution: "estautomate@workspace:."
   dependencies:
     commander: ^10.0.0
     escomplex: ^2.0.0-alpha
+    esprima: "*"
     ts-complex: ^1.0.0
   bin:
     estautomate: src/index.js

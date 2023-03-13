@@ -35,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["commander", "npm:10.0.0"],\
             ["escomplex", "npm:2.0.0-alpha"],\
+            ["esprima", "npm:4.0.1"],\
             ["ts-complex", "npm:1.0.0"]\
           ],\
           "linkType": "SOFT"\
@@ -68,6 +69,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["esprima", [\
+        ["npm:4.0.1", {\
+          "packageLocation": "./.yarn/cache/esprima-npm-4.0.1-1084e98778-b45bc805a6.zip/node_modules/esprima/",\
+          "packageDependencies": [\
+            ["esprima", "npm:4.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["estautomate", [\
         ["workspace:.", {\
           "packageLocation": "./",\
@@ -75,6 +85,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["estautomate", "workspace:."],\
             ["commander", "npm:10.0.0"],\
             ["escomplex", "npm:2.0.0-alpha"],\
+            ["esprima", "npm:4.0.1"],\
             ["ts-complex", "npm:1.0.0"]\
           ],\
           "linkType": "SOFT"\
