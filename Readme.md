@@ -16,7 +16,7 @@ A given project's total complexity is documented in Jira.
 
 - A custom field would be used on a Jira Issue (i.e. `complexity_estimate` and `complexity_actual`)
 - The developers estimate what the complexity would be for `complexity_estimate`
-- When developer a developer creates a branch, it should match the issue ID in Jira (i.e. `PLATEXP-1242`)
+- When developer a developer creates a branch, it should match the issue ID in Jira (i.e. `PREFIX-1242`)
 - When developer merges branch into main, CI runs a script against the codebase and pushes up the total card for the `complexity_actual` field.
 
 This can then be charted and understood along with developer velocity to make better estimates in the future. For more information, see [ADR0001](./docs/architecture/decisions/0001.md)
