@@ -1,6 +1,6 @@
-# estimate-assist
+# esta
 
-`estimate-assist` is a quantitative analysis tool that helps teams make better estimates. This tool assumes a _innovation methodology_ to software engineering is in place for a given organization.
+`esta` is a quantitative analysis tool that helps teams make better estimates. This tool assumes a _innovation methodology_ to software engineering is in place for a given organization.
 
 This tool allows for insight into a team's delivery date for a given project using [Halstead Cyclomatic Complexity](https://en.wikipedia.org/wiki/Halstead_complexity_measures) or [Cyclomatic Complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity) projections for modules in a given development effort when the designs come in for feedback and critique.
 
