@@ -1,10 +1,10 @@
 # estimation by code complexity
 
-For meaningful estimations, we need to rely on objective metrics. If we are to estimate in a meaninful way outside giving an estimation based on time to delivery, time being measured by hours / weeks / months. Therefore, subjective measurements cannot be the primary means of estimation for a development team as a concrete measurement is always required.
+For meaningful estimations, we need to rely on objective metrics. If we are to estimate in a meaninful way outside giving an estimation based on time to delivery (time being measured by concrete hours / weeks / months), our means of validating estimations must be shared. If we cannot validate our non-time-based estimate, it must be a shared and objective measurement.
 
-Estimations must be meaningful. With external factors, we might not know exactly when we will complete a given task. So there's an internal, subjective, and private calculus that occurs behind any given estimate for time that cannot be shared. Therefore, an objective means of estimating a given task will allow for a shared, meaningful estimate.
+Estimations must be meaningful. With external factors, there is an internal, subjective, and private calculus that occurs when a non-time-based estimate is given that cannot be shared. Therefore, an objective and shared means of estimating a given task will allow for a meaningful estimate.
 
-The objective metric that we give, that is not time-based, however must convert _to time_. Time ultimately matters most. The time it takes to deliver an effort is derived from the objective measurement the team gives about their effort _and_ the speed it takes developers to deliver a given card.
+The objective metric that we give that is not time-based must convert _to time_. Time ultimately matters most. The time it takes to deliver an effort is derived from the objective measurement the team gives about their effort _and_ the speed it takes developers to deliver a given task.
 
 ## complexity and estimation
 
@@ -46,6 +46,6 @@ So now you can see that there is an element of code quality, style, and structur
 
 During estimation, if you do not align, aim for the implementation breakdown that has the lowest overall complexity.
 
-## evaluation
+## evaluatimg evidence
 
-At checkin, running code metric analysis will answer what the actual result is. The system then begins to build a dataset around complexity and delivery time. Therefore, the estimates are validated and the delivery time becomes more apparent.
+At checkin, running code metric analysis will answer what the actual result is. The system then begins to build a dataset around complexity and delivery time. Therefore, the estimates are validated, the delivery time becomes more apparent, and we can start meaningfully saying "On average, a card of size 2 can be delivered in 50 hours" based on the complexity asserted and evaluated over time.
