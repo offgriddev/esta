@@ -46,6 +46,6 @@ So now you can see that there is an element of code quality, style, and structur
 
 During estimation, if you do not align, aim for the implementation breakdown that has the lowest overall complexity.
 
-## evaluatimg evidence
+## evaluating evidence
 
 At checkin, running code metric analysis will answer what the actual result is. The system then begins to build a dataset around complexity and delivery time. Therefore, the estimates are validated, the delivery time becomes more apparent, and we can start meaningfully saying "On average, a card of size 2 can be delivered in 50 hours" based on the complexity asserted and evaluated over time.
