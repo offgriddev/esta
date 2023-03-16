@@ -2,7 +2,6 @@ import { Command } from "commander";
 import { readFile } from "fs/promises";
 import { parse } from "csv/sync";
 import groupBy from "lodash.groupby";
-import random from "lodash.random";
 
 const columns = [
   "Summary",
@@ -109,6 +108,22 @@ export const calculateEstimate = new Command()
       return [undefined, {}];
     };
 
+    const addOverages = (player, currentWeek, key, overage, card) => {
+      if (overage > 0) {
+        // overages get pushed into next week
+        const leftoverAmount = overage - hoursPerWeek;
+        player.weeks[currentWeek + 1] = player.weeks[currentWeek + 1] || [];
+        player.weeks[currentWeek + 1].push({
+          ...card,
+          player: player.name,
+          epic: key,
+          hours: hoursPerWeek,
+        });
+        if (leftoverAmount > 0) {
+          addOverages(player, currentWeek + 1, key, leftoverAmount, card);
+        }
+      }
+    };
     for (const key of keys) {
       let currentWeek = 0;
       const cards = groupedRecords[key].facts;
@@ -135,16 +150,8 @@ export const calculateEstimate = new Command()
             hours: workable,
           });
 
-          if (overage > 0) {
-            // overages get pushed into next week
-            player.weeks[currentWeek + 1] = player.weeks[currentWeek + 1] || [];
-            player.weeks[currentWeek + 1].push({
-              ...card,
-              player: player.name,
-              epic: key,
-              hours: overage,
-            });
-          }
+          // do this recursively
+          addOverages(player, currentWeek, key, overage, card);
           cards.splice(cardIndex, 1);
         }
       }
