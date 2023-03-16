@@ -34,8 +34,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["commander", "npm:10.0.0"],\
+            ["csv", "npm:6.2.0"],\
             ["escomplex", "npm:2.0.0-alpha"],\
             ["esprima", "npm:4.0.1"],\
+            ["lodash.groupby", "npm:4.6.0"],\
+            ["lodash.random", "npm:3.2.0"],\
             ["ts-complex", "npm:1.0.0"]\
           ],\
           "linkType": "SOFT"\
@@ -55,6 +58,46 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/commander-npm-10.0.0-2e6f452447-9f6495651f.zip/node_modules/commander/",\
           "packageDependencies": [\
             ["commander", "npm:10.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["csv", [\
+        ["npm:6.2.0", {\
+          "packageLocation": "./.yarn/cache/csv-npm-6.2.0-6b65fbe877-2610f24898.zip/node_modules/csv/",\
+          "packageDependencies": [\
+            ["csv", "npm:6.2.0"],\
+            ["csv-generate", "npm:4.2.2"],\
+            ["csv-parse", "npm:5.3.6"],\
+            ["csv-stringify", "npm:6.3.0"],\
+            ["stream-transform", "npm:3.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["csv-generate", [\
+        ["npm:4.2.2", {\
+          "packageLocation": "./.yarn/cache/csv-generate-npm-4.2.2-36d33f960c-f262698c92.zip/node_modules/csv-generate/",\
+          "packageDependencies": [\
+            ["csv-generate", "npm:4.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["csv-parse", [\
+        ["npm:5.3.6", {\
+          "packageLocation": "./.yarn/cache/csv-parse-npm-5.3.6-bea8b3200b-a6dcb61a06.zip/node_modules/csv-parse/",\
+          "packageDependencies": [\
+            ["csv-parse", "npm:5.3.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["csv-stringify", [\
+        ["npm:6.3.0", {\
+          "packageLocation": "./.yarn/cache/csv-stringify-npm-6.3.0-9895e2a630-d2503ad298.zip/node_modules/csv-stringify/",\
+          "packageDependencies": [\
+            ["csv-stringify", "npm:6.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -84,8 +127,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["estautomate", "workspace:."],\
             ["commander", "npm:10.0.0"],\
+            ["csv", "npm:6.2.0"],\
             ["escomplex", "npm:2.0.0-alpha"],\
             ["esprima", "npm:4.0.1"],\
+            ["lodash.groupby", "npm:4.6.0"],\
+            ["lodash.random", "npm:3.2.0"],\
             ["ts-complex", "npm:1.0.0"]\
           ],\
           "linkType": "SOFT"\
@@ -96,6 +142,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash-npm-4.17.21-6382451519-eb835a2e51.zip/node_modules/lodash/",\
           "packageDependencies": [\
             ["lodash", "npm:4.17.21"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.groupby", [\
+        ["npm:4.6.0", {\
+          "packageLocation": "./.yarn/cache/lodash.groupby-npm-4.6.0-b885eee622-e2d4d13d12.zip/node_modules/lodash.groupby/",\
+          "packageDependencies": [\
+            ["lodash.groupby", "npm:4.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.random", [\
+        ["npm:3.2.0", {\
+          "packageLocation": "./.yarn/cache/lodash.random-npm-3.2.0-364a92eb5e-a731327ee8.zip/node_modules/lodash.random/",\
+          "packageDependencies": [\
+            ["lodash.random", "npm:3.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["stream-transform", [\
+        ["npm:3.2.2", {\
+          "packageLocation": "./.yarn/cache/stream-transform-npm-3.2.2-16a72e038e-bc368a623b.zip/node_modules/stream-transform/",\
+          "packageDependencies": [\
+            ["stream-transform", "npm:3.2.2"]\
           ],\
           "linkType": "HARD"\
         }]\

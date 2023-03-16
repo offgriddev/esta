@@ -58,12 +58,12 @@ export const gatherMetrics = new Command()
     const { include, exclude, analyze } = {
       ts: {
         include: /\.ts/,
-        exclude: /\.d.ts/,
+        exclude: /\.d.ts|__mocks__|.test.ts/,
         analyze: analyzeTypeScript,
       },
       js: {
         include: /\.js/,
-        exclude: /\.d.js/,
+        exclude: /\.test.js/,
         analyze: analyzeJavaScript,
       },
     }[language];
