@@ -47,5 +47,4 @@ export const calculateEstimate = new Command()
       )}% of a normal working week`
     );
     console.log(`Total amount of weeks: ${weeks.length}`);
-    //console.log(JSON.stringify(players, "", 2));
   });

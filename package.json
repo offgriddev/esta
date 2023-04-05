@@ -1,7 +1,7 @@
 {
   "name": "estautomate",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/cli/index.js",
   "license": "MIT",
   "packageManager": "yarn@3.2.3",
   "type": "module",
@@ -9,9 +9,19 @@
     "node": "^18"
   },
   "scripts": {
-    "cli": "node src/index.js"
+    "cli": "node src/cli/index.js",
+    "build:action": "ncc build src/esta-action/index.js -o dist --source-map --license licenses.txt"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/offgriddev/esta.git"
+  },
+  "bugs": {
+    "url": "https://github.com/offgriddev/esta/issues"
+  },
+  "homepage": "https://github.com/offgriddev/esta#readme",
   "dependencies": {
+    "@actions/core": "^1.10.0",
     "commander": "^10.0.0",
     "csv": "6.2.0",
     "escomplex": "^2.0.0-alpha",
@@ -20,5 +30,8 @@
     "lodash.random": "^3.2.0",
     "ts-complex": "^1.0.0"
   },
-  "bin": "src/index.js"
+  "bin": "src/cli/index.js",
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.1"
+  }
 }
