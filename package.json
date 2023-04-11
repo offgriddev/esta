@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "license": "MIT",
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@1.22.19",
   "type": "module",
   "engines": {
     "node": ">=16"
