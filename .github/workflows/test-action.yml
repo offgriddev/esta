@@ -9,7 +9,19 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install
+        shell: bash
+        run: yarn install --immutable
+
+      - name: Test Local Action
+        uses: ./
         with:
           milliseconds: 1000
