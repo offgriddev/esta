@@ -1,2 +1,1 @@
-
-export async function run()
+export async function run() {}
