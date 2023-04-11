@@ -1,7 +1,7 @@
 {
   "name": "estautomate",
   "version": "1.0.0",
-  "main": "src/cli/index.js",
+  "main": "src/index.js",
   "license": "MIT",
   "packageManager": "yarn@3.2.3",
   "type": "module",
