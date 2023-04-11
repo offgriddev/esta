@@ -34,6 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@actions/core", "npm:1.10.0"],\
+            ["@actions/exec", "npm:1.1.1"],\
             ["@vercel/ncc", "npm:0.36.1"],\
             ["commander", "npm:10.0.0"],\
             ["csv", "npm:6.2.0"],\
@@ -57,12 +58,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@actions/exec", [\
+        ["npm:1.1.1", {\
+          "packageLocation": "./.yarn/cache/@actions-exec-npm-1.1.1-90973d2f96-d976e66dd5.zip/node_modules/@actions/exec/",\
+          "packageDependencies": [\
+            ["@actions/exec", "npm:1.1.1"],\
+            ["@actions/io", "npm:1.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@actions/http-client", [\
         ["npm:2.1.0", {\
           "packageLocation": "./.yarn/cache/@actions-http-client-npm-2.1.0-bbd9cc833d-25a72a952c.zip/node_modules/@actions/http-client/",\
           "packageDependencies": [\
             ["@actions/http-client", "npm:2.1.0"],\
             ["tunnel", "npm:0.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@actions/io", [\
+        ["npm:1.1.3", {\
+          "packageLocation": "./.yarn/cache/@actions-io-npm-1.1.3-82d1cf012b-42841ac2b8.zip/node_modules/@actions/io/",\
+          "packageDependencies": [\
+            ["@actions/io", "npm:1.1.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -449,6 +469,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["estautomate", "workspace:."],\
             ["@actions/core", "npm:1.10.0"],\
+            ["@actions/exec", "npm:1.1.1"],\
             ["@vercel/ncc", "npm:0.36.1"],\
             ["commander", "npm:10.0.0"],\
             ["csv", "npm:6.2.0"],\
