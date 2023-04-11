@@ -16,5 +16,5 @@ outputs:
 
 runs:
   using: "node16"
-  main: "src/index.js"
+  main: "src/esta-action/index.js"
   post-if: "success()"
