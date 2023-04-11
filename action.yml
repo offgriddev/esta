@@ -15,6 +15,6 @@ outputs:
     description: Link to card referenced in PR
 
 runs:
-  using: "node18"
+  using: "node16"
   main: "dist/index.js"
   post-if: "success()"
