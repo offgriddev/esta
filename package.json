@@ -6,7 +6,7 @@
   "packageManager": "yarn@3.2.3",
   "type": "module",
   "engines": {
-    "node": "^18"
+    "node": ">=16"
   },
   "scripts": {
     "cli": "node src/cli/index.js",
