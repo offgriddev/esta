@@ -32,7 +32,7 @@ export function analyzeJavaScript(sourceFiles) {
     const result = escomplex.analyse(file);
     console.log(file);
     console.log(result);
-    if (!complexity) {
+    if (!result.complexity) {
       console.log(`${file}: 0`);
       continue;
     }
