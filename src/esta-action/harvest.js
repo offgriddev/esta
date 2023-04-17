@@ -26,6 +26,7 @@ export function analyzeTypeScript(sourceFiles) {
 
 export function analyzeJavaScript(sourceFiles) {
   const metrics = [];
+  console.log("source files", sourceFiles);
   for (let s = 0; s < sourceFiles.length; s++) {
     const file = sourceFiles[s];
     const result = escomplex.analyse(file);
