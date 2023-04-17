@@ -10,6 +10,8 @@ inputs:
     description: supports S3 bucket only
   language:
     description: language to compute circuit rank complexity for - supports js and ts
+  context:
+    description: GH action context
 
 outputs:
   card-url:

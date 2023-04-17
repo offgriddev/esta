@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { estimate } from "../lib/index.js";
+import { estimate } from "../../lib/index.js";
 import { readFile } from "fs/promises";
 import { parse } from "csv/sync";
 const columns = [

@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { getSourceFile } from "../lib/index.js";
+import { getSourceFile } from "../../lib/index.js";
 import tscomplex from "ts-complex";
 import escomplex from "escomplex";
 
