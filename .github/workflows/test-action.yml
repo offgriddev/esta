@@ -28,3 +28,4 @@ jobs:
           language: "js"
           sha: ${{ github.sha }}
           actor: ${{ github.actor }}
+          working_directory: ./src
