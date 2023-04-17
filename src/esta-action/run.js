@@ -11,9 +11,9 @@ export async function run() {
   const config = {
     sha: core.getInput("sha"),
     actor: core.getInput("actor"),
+    working_directory: core.getInput("working_directory") || ".",
+    language: core.getInput("language"),
   };
-  const directory = core.getInput("working_directory");
-  const language = core.getInput("language");
   const { include, exclude, analyze } = {
     ts: {
       include: /\.ts/,
@@ -25,7 +25,7 @@ export async function run() {
       exclude: /\.test.js/,
       analyze: analyzeJavaScript,
     },
-  }[language];
+  }[config.language];
   const sourceFiles = await getSourceFile(directory, include, exclude);
   let metrics = analyze(sourceFiles);
 
