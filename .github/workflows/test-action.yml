@@ -27,3 +27,4 @@ jobs:
         with:
           blob_storage: "test"
           language: "js"
+          context: ${{ github }}
