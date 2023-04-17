@@ -26,7 +26,11 @@ export async function run() {
       analyze: analyzeJavaScript,
     },
   }[config.language];
-  const sourceFiles = await getSourceFile(config.directory, include, exclude);
+  const sourceFiles = await getSourceFile(
+    config.working_directory,
+    include,
+    exclude
+  );
   let metrics = analyze(sourceFiles);
 
   const complexities = metrics.map(({ complexity }) => complexity);
