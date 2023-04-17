@@ -2,13 +2,14 @@ name: ESTimate Automation (ESTA) Jira Sync
 
 description: Custom GitHub Action for analyzing the complexity added to a repository through static analysis and uploading it to Jira
 
-# inputs:
-#   jira-token:
-#     description: PAT for service account at Jira, must have read/write access
-#     required: true
-#   github-token:
-#     description: GITHUB_TOKEN secret required for auth into GH APIs
-#     required: true
+inputs:
+  working_directory:
+    description: target directory for analysis
+    default: "."
+  blob_storage:
+    description: supports S3 bucket only
+  language:
+    description: language to compute circuit rank complexity for - supports js and ts
 
 outputs:
   card-url:
