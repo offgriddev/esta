@@ -21,10 +21,10 @@ jobs:
         shell: bash
         run: yarn install --immutable
 
-      - run: echo ${{ github.ref }}
+      - run: yarn cli pgc ${{ github }}
       - name: Test Local Action
         uses: ./
         with:
           blob_storage: "test"
           language: "js"
-          context: ${{ github }}
+          context: ${{ github.actor }}
