@@ -21,13 +21,11 @@ jobs:
         shell: bash
         run: yarn install --immutable
 
-      - name: print context
-        env:
-          JOB_CONTEXT: ${{ toJson(github) }}
-        run: echo $JOB_CONTEXT
       - name: Test Local Action
         uses: ./
+        env:
+          JOB_CONTEXT: ${{ toJson(github) }}
         with:
           blob_storage: "test"
           language: "js"
-          context: ${{ github.actor }}
+          context: ${{ env.JOB_CONTEXT }}
