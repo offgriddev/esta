@@ -12,7 +12,7 @@ export const getSourceFile = async (folder, includedType, excludedType) => {
     const filePath = `${folder}/${path.name}`;
 
     if (path.isDirectory()) {
-      if (path.name.match(/.*node_modules.*|*.dist.*/)) continue;
+      if (path.name.match(/.*node_modules.*/)) continue;
 
       const recursePaths = await getSourceFile(
         `${folder}/${path.name}`,
