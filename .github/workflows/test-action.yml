@@ -21,7 +21,7 @@ jobs:
         shell: bash
         run: yarn install --immutable
 
-      - run: yarn cli pgc ${{ github }}
+      - run: echo ${{ github.event }}
       - name: Test Local Action
         uses: ./
         with:
