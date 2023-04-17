@@ -1,6 +1,6 @@
-import { getSourceFile } from "./utils";
+import { getSourceFile } from "./utils.js";
 import core from "@actions/core";
-import { analyzeJavaScript, analyzeTypeScript } from "./harvest";
+import { analyzeJavaScript, analyzeTypeScript } from "./harvest.js";
 
 /**
  * run performs the operations required for objective assessment
