@@ -31,16 +31,16 @@ export function analyzeJavaScript(sourceFiles) {
     const result = escomplex.analyse(file);
     console.log(file);
     console.log(result);
-    // const complexity = halstead[Object.keys(halstead)[0]];
-    // if (!complexity) {
-    //   console.log(`${file}: 0`);
-    //   continue;
-    // }
-    // console.log(`${file}: ${complexity}`);
-    //    metrics.push({
-    //      source: file,
-    //      complexity,
-    //    });
+    const complexity = halstead[Object.keys(halstead)[0]];
+    if (!complexity) {
+      console.log(`${file}: 0`);
+      continue;
+    }
+    console.log(`${file}: ${complexity}`);
+    metrics.push({
+      source: file,
+      complexity,
+    });
   }
 
   return metrics;

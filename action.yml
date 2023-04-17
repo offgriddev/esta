@@ -10,8 +10,10 @@ inputs:
     description: supports S3 bucket only
   language:
     description: language to compute circuit rank complexity for - supports js and ts
-  context:
-    description: GH action context
+  sha:
+    description: SHA for commit
+  actor
+    description: PR author
 
 outputs:
   card-url:

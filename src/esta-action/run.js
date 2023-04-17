@@ -8,7 +8,10 @@ import { analyzeJavaScript, analyzeTypeScript } from "./harvest.js";
  * 2. export github statistics to blob storage
  */
 export async function run() {
-  console.log(core.getInput("context"));
+  const config = {
+    sha: core.getInput("sha"),
+    actor: core.getInput("actor"),
+  };
   const directory = core.getInput("working_directory");
   const language = core.getInput("language");
   const { include, exclude, analyze } = {

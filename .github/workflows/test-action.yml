@@ -26,4 +26,5 @@ jobs:
         with:
           blob_storage: "test"
           language: "js"
-          context: ${{ toJson(github) }}
+          sha: ${{ github.sha }}
+          actor: ${{ github.actor }}
