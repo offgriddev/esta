@@ -21,7 +21,10 @@ jobs:
         shell: bash
         run: yarn install --immutable
 
-      - run: echo "$GITHUB_CONTEXT"
+      - name: print context
+        env:
+          JOB_CONTEXT: ${{ toJson(github) }}
+        run: echo $JOB_CONTEXT
       - name: Test Local Action
         uses: ./
         with:
