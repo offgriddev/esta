@@ -3,6 +3,7 @@ import groupBy from "lodash.groupby";
 
 export const getSourceFile = async (folder, includedType, excludedType) => {
   let filePaths = [];
+  console.log(folder, includedType, excludedType);
   // get contents for folder
   const paths = await readdir(folder, { withFileTypes: true });
   // check if item is a directory
