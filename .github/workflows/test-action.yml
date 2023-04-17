@@ -23,9 +23,7 @@ jobs:
 
       - name: Test Local Action
         uses: ./
-        env:
-          JOB_CONTEXT: ${{ toJson(github) }}
         with:
           blob_storage: "test"
           language: "js"
-          context: ${{ env.JOB_CONTEXT }}
+          context: ${{ toJson(github) }}
