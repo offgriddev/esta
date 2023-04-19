@@ -14,7 +14,6 @@ export function analyzeTypeScript(sourceFiles) {
       console.log(`${file}: 0`);
       continue;
     }
-    console.log(`${file}: ${complexity}`);
     metrics.push({
       source: file,
       complexity,
@@ -26,12 +25,9 @@ export function analyzeTypeScript(sourceFiles) {
 
 export function analyzeJavaScript(sourceFiles) {
   const metrics = [];
-  console.log("source files", sourceFiles);
   for (let s = 0; s < sourceFiles.length; s++) {
     const file = sourceFiles[s];
     const result = escomplex.analyse(file);
-    console.log(file);
-    console.log(result);
     if (!result.complexity) {
       console.log(`${file}: 0`);
       continue;

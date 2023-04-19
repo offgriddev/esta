@@ -1,6 +1,7 @@
 import { getSourceFile } from "./utils.js";
 import core from "@actions/core";
 import { analyzeJavaScript, analyzeTypeScript } from "./harvest.js";
+import { writeFile, mkdir } from "fs/promises";
 
 /**
  * run performs the operations required for objective assessment
@@ -8,12 +9,11 @@ import { analyzeJavaScript, analyzeTypeScript } from "./harvest.js";
  * 2. export github statistics to blob storage
  */
 export async function run() {
-  const config = {
-    sha: core.getInput("sha"),
-    actor: core.getInput("actor"),
-    working_directory: core.getInput("working_directory") || ".",
-    language: core.getInput("language"),
-  };
+  const sha = core.getInput("sha");
+  const actor = core.getInput("actor");
+  const working_directory = core.getInput("working_directory");
+  const language = core.getInput("language");
+
   const { include, exclude, analyze } = {
     ts: {
       include: /\.ts/,
@@ -22,18 +22,32 @@ export async function run() {
     },
     js: {
       include: /\.js/,
-      exclude: /\.test.js/,
+      exclude: /\.test.js|__mocks__/,
       analyze: analyzeJavaScript,
     },
-  }[config.language];
-  const sourceFiles = await getSourceFile(
-    config.working_directory,
-    include,
-    exclude
-  );
+  }[language];
+  const sourceFiles = await getSourceFile(working_directory, include, exclude);
   let metrics = analyze(sourceFiles);
 
-  const complexities = metrics.map(({ complexity }) => complexity);
+  const complexities = metrics.map(
+    ({ aggregate: { complexity } }) => complexity
+  );
   const total = complexities.reduce((prev, cur) => +prev + +cur, 0);
-  console.log(total);
+  console.log("total complexity", total);
+  const folder = "complexity-assessment";
+  const filename = `complexity-assessment/${sha}.json`;
+  const analytics = {
+    totalComplexity: total,
+    sha,
+    actor,
+    metrics,
+  };
+  await mkdir(folder);
+  await writeFile(filename, JSON.stringify(analytics, "", 2));
+
+  // write to folder to then use in subsequent actions
+  core.setOutput("export_filename", `${sha}.json`);
+
+  // we just need to write a file to be uploade with the relevant
+  // github actor, branch, commit sha,
 }

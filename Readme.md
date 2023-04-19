@@ -1,6 +1,12 @@
 # esta
 
-`esta` is a quantitative analysis tool that helps teams make better estimates. This tool assumes a _innovation methodology_ to software engineering is in place for a given organization.
+`está` is an action primarily for TypeScript repositories to analyze the cyclomatic complexity for a repository to provide information to understand how complexity is developed through software engineering in order to predict development projects more reliably and enable development teams to be more effective in communicating timelines to product teams.
+
+# esta-action
+
+A github action that takes a temporary state in software construction by performing static analysis on the codebase and generates a file with the information required to analyze the delivery of complexity in software systems.
+
+# overview
 
 This tool allows for insight into a team's delivery date for a given project using [Halstead Cyclomatic Complexity](https://en.wikipedia.org/wiki/Halstead_complexity_measures) or [Cyclomatic Complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity) projections for modules in a given development effort when the designs come in for feedback and critique.
 
