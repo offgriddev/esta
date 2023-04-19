@@ -29,13 +29,11 @@ export async function run() {
   const sourceFiles = await getSourceFile(working_directory, include, exclude);
   let metrics = analyze(sourceFiles);
 
-  const complexities = metrics.map(
-    ({ aggregate: { complexity } }) => complexity
-  );
+  const complexities = metrics.map(({ complexity }) => complexity);
   const total = complexities.reduce((prev, cur) => +prev + +cur, 0);
   console.log("total complexity", total);
   const folder = "complexity-assessment";
-  const filename = `complexity-assessment/${sha}.json`;
+  const filename = `${folder}/${sha}.json`;
   const analytics = {
     totalComplexity: total,
     sha,
@@ -45,8 +43,9 @@ export async function run() {
   await mkdir(folder);
   await writeFile(filename, JSON.stringify(analytics, "", 2));
 
+  console.log(`complexity assessment written: ${filename}`);
   // write to folder to then use in subsequent actions
-  core.setOutput("export_filename", `${sha}.json`);
+  core.setOutput("export_filename", filename);
 
   // we just need to write a file to be uploade with the relevant
   // github actor, branch, commit sha,

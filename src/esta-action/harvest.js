@@ -1,5 +1,3 @@
-import { Command } from "commander";
-import { getSourceFile } from "../lib/index.js";
 import tscomplex from "ts-complex";
 import escomplex from "escomplex";
 
@@ -35,7 +33,7 @@ export function analyzeJavaScript(sourceFiles) {
     console.log(`${file}: ${result.complexity}`);
     metrics.push({
       source: file,
-      complexity: result.complexity,
+      complexity: result.aggregate.cyclomatic,
     });
   }
 
