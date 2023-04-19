@@ -43,6 +43,7 @@ export async function run() {
   await mkdir(folder);
   await writeFile(filename, JSON.stringify(analytics, "", 2));
 
+  console.log(JSON.stringify(analytics, "", 2));
   console.log(`complexity assessment written: ${filename}`);
   // write to folder to then use in subsequent actions
   core.setOutput("export_filename", filename);
