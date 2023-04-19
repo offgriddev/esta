@@ -30,7 +30,7 @@ export function analyzeJavaScript(sourceFiles) {
       console.log(`${file}: 0`);
       continue;
     }
-    console.log(`${file}: ${result.complexity}`);
+    console.log(`${file}: ${result.aggregate.cyclomatic}`);
     metrics.push({
       source: file,
       complexity: result.aggregate.cyclomatic,
