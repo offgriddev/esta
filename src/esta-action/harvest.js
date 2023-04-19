@@ -7,11 +7,9 @@ export function analyzeTypeScript(sourceFiles) {
   for (let s = 0; s < sourceFiles.length; s++) {
     const file = sourceFiles[s];
     const halstead = tscomplex.calculateCyclomaticComplexity(file);
-    const complexity = halstead[Object.keys(halstead)[0]];
-    if (!complexity) {
-      console.log(`${file}: 0`);
-      continue;
-    }
+    const complexity = halstead[Object.keys(halstead)[0]] || 0;
+
+    console.log(`${file}: ${complexity}`);
     metrics.push({
       source: file,
       complexity,
@@ -26,11 +24,9 @@ export function analyzeJavaScript(sourceFiles) {
   for (let s = 0; s < sourceFiles.length; s++) {
     const file = sourceFiles[s];
     const result = escomplex.analyse(file);
-    if (!result.complexity) {
-      console.log(`${file}: 0`);
-      continue;
-    }
-    console.log(`${file}: ${result.aggregate.cyclomatic}`);
+    const complexity = result.aggregate.cyclomatic || 0;
+
+    console.log(`${file}: ${complexity}`);
     metrics.push({
       source: file,
       complexity: result.aggregate.cyclomatic,
