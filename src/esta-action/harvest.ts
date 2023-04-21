@@ -1,18 +1,35 @@
 import core from '@actions/core'
-import tscomplex from 'ts-complex'
+import ts from 'typescript'
+import {calculateHalstead} from './halstead'
+import {calculateComplexity} from './complexity'
+import mergeWith from 'lodash.mergewith'
+import {HalsteadMetrics} from './types'
 
-type ComplexityResult = {source: string; complexity: number}
+type ComplexityResult = {
+  source: string
+  metrics: HalsteadMetrics & {complexity: number}
+}
 // current support only ts
-export function analyzeTypeScript(sourceFiles: string[]): ComplexityResult[] {
+export async function analyzeTypeScript(
+  sourceFiles: string[],
+  scriptTarget: ts.ScriptTarget
+): Promise<ComplexityResult[]> {
   const metrics = []
-  for (const file of sourceFiles) {
-    const halstead = tscomplex.calculateCyclomaticComplexity(file)
-    const complexity = halstead[Object.keys(halstead)[0]] || 0
+  for (const filename of sourceFiles) {
+    const halsteadMetrics = await calculateHalstead(
+      filename,
+      scriptTarget || ts.ScriptTarget.ES2018
+    )
+    const complexityMeasure = await calculateComplexity(
+      filename,
+      scriptTarget || ts.ScriptTarget.ES2018
+    )
+    const result = mergeWith(halsteadMetrics, complexityMeasure)
 
-    core.info(`${file}: ${complexity}`)
+    core.info(`${filename}: ${JSON.stringify(result, undefined, 2)}`)
     metrics.push({
-      source: file,
-      complexity
+      source: filename,
+      metrics: result
     })
   }
 

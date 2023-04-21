@@ -1,4 +1,5 @@
 import core from '@actions/core'
+import ts from 'typescript'
 import {getSourceFile} from './utils'
 import {analyzeTypeScript} from './harvest'
 import {mkdir, writeFile} from 'fs/promises'
@@ -6,15 +7,16 @@ import {mkdir, writeFile} from 'fs/promises'
 export async function analyze(
   sha: string,
   actor: string,
-  workingDirectory: string
+  workingDirectory: string,
+  scriptTarget: ts.ScriptTarget
 ): Promise<string> {
   core.debug(`inputs: ${sha} ${actor} ${workingDirectory}`)
   const include = /\.ts/
   const exclude = /\.d.ts|__mocks__|.test.ts/
   const sourceFiles = await getSourceFile(workingDirectory, include, exclude)
-  const metrics = analyzeTypeScript(sourceFiles)
+  const analysis = await analyzeTypeScript(sourceFiles, scriptTarget)
 
-  const complexities = metrics.map(({complexity}) => complexity)
+  const complexities = analysis.map(({metrics}) => metrics.complexity)
   const total = complexities.reduce((prev, cur) => +prev + +cur, 0)
   core.info(`total complexity ${total}`)
   const folder = 'complexity-assessment'
@@ -23,7 +25,7 @@ export async function analyze(
     totalComplexity: total,
     sha,
     actor,
-    metrics,
+    analysis,
     dateUtc: new Date().toUTCString()
   }
   await mkdir(folder)

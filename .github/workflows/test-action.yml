@@ -24,8 +24,7 @@ jobs:
       - name: Test Local Action
         uses: ./
         with:
-          blob_storage: "test"
-          language: "js"
+          blob_storage: 'test'
           sha: ${{ github.sha }}
           actor: ${{ github.actor }}
           working_directory: src

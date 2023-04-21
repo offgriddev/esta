@@ -11,6 +11,8 @@ inputs:
     description: SHA for commit
   actor:
     description: PR author
+  ecma_script_target:
+    description: ScriptTarget as defined in TypeScript (e.g. ES2018, ES2022, ESNext, etc.)
 
 outputs:
   card-url:

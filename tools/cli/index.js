@@ -4,7 +4,12 @@ import {Command} from 'commander'
 import {calculateEstimate} from './calculate-estimate/index.js'
 import {gatherMetrics} from './gather-metrics/index.js'
 import {getEstimateProbability} from './get-estimate-propability/index.js'
-import {printGithubContext} from './github-analytics/index.js'
+import {
+  calculateComplexityCommand,
+  calculateMaintainabilityCommand,
+  calculateHalsteadCommand
+} from './analyze-typescript/index.js'
+import {calculateCodeMetricsCommand} from './analyze-typescript/calculate-merge.js'
 
 const program = new Command()
   .name('estamaton')
@@ -13,6 +18,9 @@ const program = new Command()
   .addCommand(gatherMetrics)
   .addCommand(calculateEstimate)
   .addCommand(getEstimateProbability)
-  .addCommand(printGithubContext)
+  .addCommand(calculateComplexityCommand)
+  .addCommand(calculateMaintainabilityCommand)
+  .addCommand(calculateHalsteadCommand)
+  .addCommand(calculateCodeMetricsCommand)
 
 await program.parseAsync()
