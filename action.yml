@@ -7,8 +7,6 @@ inputs:
     description: target directory for analysis
   blob_storage:
     description: supports S3 bucket only
-  language:
-    description: language to compute circuit rank complexity for - supports js and ts
   sha:
     description: SHA for commit
   actor:
@@ -19,6 +17,6 @@ outputs:
     description: Link to card referenced in PR
 
 runs:
-  using: "node16"
-  main: "src/esta-action/index.js"
-  post-if: "success()"
+  using: 'node16'
+  main: 'src/esta-action/index.js'
+  post-if: 'success()'

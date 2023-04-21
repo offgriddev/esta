@@ -2,15 +2,19 @@
   "name": "estautomate",
   "version": "1.0.0",
   "main": "src/index.js",
+  "private": true,
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "type": "module",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "cli": "node src/cli/index.js",
-    "build:action": "ncc build src/esta-action/index.js -o dist --source-map --license licenses.txt"
+    "build": "tsc",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
   "repository": {
     "type": "git",
@@ -25,11 +29,23 @@
     "@actions/exec": "^1.1.1",
     "commander": "^10.0.0",
     "csv": "6.2.0",
-    "escomplex": "^2.0.0-alpha",
-    "esprima": "*",
+    "ts-complex": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "@types/node": "^18.15.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "@vercel/ncc": "^0.36.1",
+    "eslint": "^8.38.0",
+    "eslint-plugin-github": "^4.7.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^29.5.0",
+    "js-yaml": "^4.1.0",
     "lodash.groupby": "^4.6.0",
     "lodash.random": "^3.2.0",
-    "ts-complex": "^1.0.0"
+    "prettier": "^2.8.7",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
   },
   "bin": "src/cli/index.js"
 }
