@@ -1,8 +1,8 @@
-name: Test Action
+name: Release Action
 on:
-  pull_request:
+  merge:
     branches:
-      - main
+      - release/*
 
 jobs:
   # test action works running from the graph
