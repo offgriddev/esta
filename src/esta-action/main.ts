@@ -7,7 +7,7 @@ async function run(): Promise<void> {
     const actor = core.getInput('actor')
     const workingDirectory = core.getInput('working_directory')
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const scriptTarget: any = core.getInput('script_target')
+    const scriptTarget: any = core.getInput('ecma_script_target')
     const filename = analyze(sha, actor, workingDirectory, scriptTarget)
 
     core.setOutput('export_filename', filename)
