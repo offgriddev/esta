@@ -4,6 +4,7 @@
   "main": "lib/main.js",
   "private": true,
   "license": "MIT",
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "cli": "node tools/cli/index.js",
     "build": "tsc",
