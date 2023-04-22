@@ -1,5 +1,5 @@
 {
-  "name": "estautomate",
+  "name": "esta",
   "version": "1.0.0",
   "main": "lib/main.js",
   "private": true,
@@ -33,7 +33,6 @@
     "lodash.omitby": "^4.6.0",
     "lodash.random": "^3.2.0",
     "lodash.reduce": "^4.6.0",
-    "ts-complex": "^1.0.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {

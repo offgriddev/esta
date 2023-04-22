@@ -10,7 +10,6 @@ export async function analyze(
   workingDirectory: string,
   scriptTarget: ts.ScriptTarget
 ): Promise<string> {
-  core.debug(`inputs: ${sha} ${actor} ${workingDirectory}`)
   const include = /\.ts/
   const exclude = /\.d.ts|__mocks__|.test.ts/
   const sourceFiles = await getSourceFile(workingDirectory, include, exclude)
