@@ -1,0 +1,31 @@
+name: Test Action
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # test action works running from the graph
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install
+        shell: bash
+        run: yarn install --immutable
+
+      - name: Test Local Action
+        uses: ./
+        with:
+          blob_storage: 'test'
+          sha: ${{ github.sha }}
+          actor: ${{ github.actor }}
+          working_directory: src
+# build and publish
