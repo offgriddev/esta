@@ -19,7 +19,7 @@ jobs:
 
       - name: Install
         shell: bash
-        run: yarn install
+        run: yarn all
 
       - name: Test Local Action
         uses: ./
