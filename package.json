@@ -1,8 +1,9 @@
 {
   "name": "esta",
   "version": "1.0.0",
-  "main": "dist/esta-action/main.js",
+  "main": "lib/src/main.js",
   "private": true,
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "cli": "node tools/cli/index.js",
@@ -10,8 +11,9 @@
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm test"
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
   "repository": {
     "type": "git",
