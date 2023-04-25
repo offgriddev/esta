@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 16.x
           cache: 'npm'
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: -lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -27,3 +27,8 @@ jobs:
 
       - name: Run my action
         uses: ./
+        with:
+          sha: ${{ github.sha }}
+          actor: ${{ github.actor }}
+          working_directory: src
+          ecma_script_target: ES2015
