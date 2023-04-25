@@ -18,5 +18,5 @@ outputs:
 
 runs:
   using: 'node16'
-  main: 'dist/src/esta-action/main.js'
+  main: 'dist/esta-action/main.js'
   post-if: 'success()'
