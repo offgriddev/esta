@@ -18,5 +18,5 @@ outputs:
 
 runs:
   using: 'node16'
-  main: 'dist/src/main.js'
+  main: 'dist/index.js'
   post-if: 'success()'
