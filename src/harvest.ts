@@ -7,7 +7,7 @@ import {HalsteadMetrics} from './types'
 
 type ComplexityResult = {
   source: string
-  metrics: HalsteadMetrics & {complexity: number}
+  metrics: Record<string, HalsteadMetrics & {complexity: number}>
 }
 // current support only ts
 export async function analyzeTypeScript(

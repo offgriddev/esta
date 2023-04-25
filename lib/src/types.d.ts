@@ -7,7 +7,7 @@ export type HalsteadMetrics = {
     time: number;
     bugsDelivered: number;
     operands: OperationMetrics;
-} | {};
+} | {} | Record<string, unknown>;
 export type OpExpression = {
     total: number;
     _unique: Set<string | number>;

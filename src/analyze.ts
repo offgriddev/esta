@@ -16,7 +16,15 @@ export async function analyze(
   const analysis = await analyzeTypeScript(sourceFiles, scriptTarget)
 
   core.info(JSON.stringify(analysis, undefined, 2))
-  const complexities = analysis.map(({metrics}) => metrics.complexity)
+  const complexities = analysis.map(({metrics}) => {
+    const functions = Object.keys(metrics)
+    const functionComplexity = functions.map(func => metrics[func].complexity)
+    const max = Object.values(functionComplexity).reduce((prev, cur) => {
+      return prev > cur ? prev : cur
+    }, 0)
+    return max
+  })
+
   core.info(`complexities: ${JSON.stringify(complexities, undefined, 2)}`)
   const total = complexities.reduce((prev, cur) => +prev + +cur, 0)
   core.info(`total complexity ${total}`)

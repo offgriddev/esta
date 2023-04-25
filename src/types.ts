@@ -10,6 +10,7 @@ export type HalsteadMetrics =
       operands: OperationMetrics
     }
   | {}
+  | Record<string, unknown>
 
 export type OpExpression = {
   total: number
