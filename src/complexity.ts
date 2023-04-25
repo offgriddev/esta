@@ -56,7 +56,7 @@ export function calculateFromSource(
 export async function calculateComplexity(
   filePath: string,
   scriptTarget: ts.ScriptTarget
-): Promise<Record<string, number>> {
+): Promise<Record<string, unknown>> {
   const sourceText = await readFile(filePath)
   const source = ts.createSourceFile(
     filePath,
