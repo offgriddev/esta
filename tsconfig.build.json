@@ -3,6 +3,6 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.test.ts"]
+  "include": ["esta-action/**/*.ts"],
+  "exclude": ["esta-action/**/*.test.ts"]
 }
