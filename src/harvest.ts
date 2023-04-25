@@ -1,4 +1,4 @@
-import core from '@actions/core'
+import * as core from '@actions/core'
 import ts from 'typescript'
 import {calculateHalstead} from './halstead'
 import {calculateComplexity} from './complexity'
