@@ -26,7 +26,6 @@ export async function analyzeTypeScript(
     )
     const result = mergeWith(halsteadMetrics, complexityMeasure)
 
-    core.info(`${filename}: ${JSON.stringify(result, undefined, 2)}`)
     metrics.push({
       source: filename,
       metrics: result
