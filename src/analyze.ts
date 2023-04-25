@@ -16,6 +16,7 @@ export async function analyze(
   const analysis = await analyzeTypeScript(sourceFiles, scriptTarget)
 
   const complexities = analysis.map(({metrics}) => metrics.complexity)
+  core.info(JSON.stringify(complexities, undefined, 2))
   const total = complexities.reduce((prev, cur) => +prev + +cur, 0)
   core.info(`total complexity ${total}`)
   const folder = 'complexity-assessment'
