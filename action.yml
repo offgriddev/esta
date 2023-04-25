@@ -1,0 +1,22 @@
+name: ESTimate Automation (está)
+
+description: está takes a temporary state in software construction by performing static analysis on the codebase and uploads it to S3 for future analysis
+
+inputs:
+  working_directory:
+    description: target directory for analysis
+  sha:
+    description: SHA for commit
+  actor:
+    description: PR author
+  ecma_script_target:
+    description: ScriptTarget as defined in TypeScript (e.g. ES2018, ES2022, ESNext, etc.)
+
+outputs:
+  card-url:
+    description: Link to card referenced in PR
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+  post-if: 'success()'

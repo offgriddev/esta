@@ -1,0 +1,62 @@
+name: Release Action
+on:
+  merge:
+    branches:
+      - main
+
+jobs:
+  # test action works running from the graph
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install
+        shell: bash
+        run: yarn install --immutable
+
+      - name: Build All
+        shell: bash
+        run: npm run all
+
+      - name: Push updates to branch for major version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --force dist
+          git commit -C HEAD --amend
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v1
+
+      #      - name: Push updates to branch for major version
+      #        # If a new version is published, i.e. v1.2.3 then this step will update
+      #        # branch "v1" to this commit.
+      #        # The dist folder (built) is included so that action can be used directly from Github
+      #        # ref (where exact versions can pull from npm)
+      #        if: steps.semantic.outputs.new_release_published == 'true'
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #        # NOTE: Git user must be set in order for amend of commit to add dist folder
+      #        # --force is used because dist is within gitignore
+      #        run: |
+      #          git config --global user.name "github-actions[bot]"
+      #          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      #          git add --force dist
+      #          git commit -C HEAD --amend
+      #          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}
+
+      - name: Test Local Action
+        uses: ./
+        with:
+          blob_storage: 'test'
+          sha: ${{ github.sha }}
+          actor: ${{ github.actor }}
+          working_directory: src
+# build and publish
