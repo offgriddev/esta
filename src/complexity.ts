@@ -32,16 +32,16 @@ const increasesComplexity = (node: ts.Node): boolean => {
 
 export function calculateFromSource(
   source: ts.SourceFile
-): Record<string, number> {
+): Record<string, unknown> {
   let complexity = 0
-  const output: Record<string, number> = {}
+  const output: Record<string, unknown> = {}
   ts.forEachChild(source, function cb(node) {
     if (isFunctionWithBody(node)) {
       const old = complexity
       complexity = 1
       ts.forEachChild(node, cb)
       const name = getName(node as NamedDeclaration)
-      output[name] = complexity
+      output[name] = {complexity}
       complexity = old
     } else {
       if (increasesComplexity(node)) {
