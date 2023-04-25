@@ -1,6 +1,6 @@
 name: Release Action
 on:
-  merge:
+  push:
     branches:
       - main
 
