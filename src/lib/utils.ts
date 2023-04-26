@@ -24,6 +24,15 @@ export async function analyzeTypeScriptProject(
 
   return metrics
 }
+
+export async function getSourceFolders(folders: string[], includedType: RegExp, excludedType: RegExp): Promise<string[]> {
+  let files: string[] = []
+  for (const folder of folders) {
+    files = files.concat(await getSourceFile(folder, includedType, excludedType))
+  }
+  return files
+}
+
 export async function getSourceFile(
   folder: string,
   includedType: RegExp,
