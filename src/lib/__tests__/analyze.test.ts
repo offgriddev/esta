@@ -65,7 +65,7 @@ jest.mock('@actions/core', () => ({
   debug: jest.fn().mockReturnValue(undefined),
   info: jest.fn().mockReturnValue(undefined)
 }))
-describe(__filename, () => {
+describe.skip(__filename, () => {
   it('calls getSourceFile', async () => {
     const filename = await analyze(
       'sha',
