@@ -10,5 +10,5 @@ export const analyzeCodeCommand = new Command()
     'Target ECMAScript Version, e.g. ES3, ES2022, ESNext'
   )
   .action(async (dir, scriptTarget) => {
-    await analyze('test', 'actor', dir, scriptTarget)
+    await analyze('test', 'actor', dir, scriptTarget, 'branch')
   })

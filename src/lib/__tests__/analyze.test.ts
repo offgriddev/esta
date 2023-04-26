@@ -71,12 +71,13 @@ describe.skip(__filename, () => {
       'sha',
       'actor',
       'workingDirectory',
-      ts.ScriptTarget.ES2018
+      ts.ScriptTarget.ES2018,
+      'branch'
     )
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
   it('calls analyzeTypeScript', async () => {
-    await analyze('sha', 'actor', 'workingDirectory', ts.ScriptTarget.ES2018)
+    await analyze('sha', 'actor', 'workingDirectory', ts.ScriptTarget.ES2018, 'branch')
     expect(analyzeTypeScript).toBeCalledWith(
       ['file1', 'file2'],
       ts.ScriptTarget.ES2018
@@ -89,7 +90,8 @@ describe.skip(__filename, () => {
       'sha',
       'actor',
       'workingDirectory',
-      ts.ScriptTarget.ES2018
+      ts.ScriptTarget.ES2018,
+      'branch'
     )
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
