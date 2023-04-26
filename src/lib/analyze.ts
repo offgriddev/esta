@@ -1,6 +1,7 @@
 import ts from 'typescript'
 import {getSourceFile} from './utils'
-import {analyzeTypeScript} from './harvest'
+import { analyzeTypeScript } from './harvest'
+import { existsSync } from 'fs'
 import {mkdir, writeFile} from 'fs/promises'
 import { logger } from '../cmds/lib/logger'
 
@@ -35,7 +36,10 @@ export async function analyze(
     analysis,
     dateUtc: new Date().toISOString()
   }
-  await mkdir(folder)
+  if (!existsSync(folder)) {
+    await mkdir(folder)
+  }
+
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
 
   logger.info(`complexity assessment written: ${filename}`)

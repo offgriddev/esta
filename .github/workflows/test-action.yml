@@ -14,6 +14,13 @@ jobs:
           npm install
       - run: |
           npm run all
+
+      - uses: ./
+        with:
+          sha: ${{ github.sha }}
+          actor: ${{ github.actor }}
+          ecma_script_target: ES2015
+
       - uses: ./
         with:
           sha: ${{ github.sha }}
