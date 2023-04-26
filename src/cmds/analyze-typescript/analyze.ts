@@ -12,7 +12,4 @@ export const analyzeCodeCommand = new Command()
   )
   .action(async (dir, scriptTarget) => {
     await analyze('test', 'actor', dir, scriptTarget)
-    const filename = await analyze('test', 'actor', dir, scriptTarget)
-
-    logger.info(filename)
   })
