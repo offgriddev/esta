@@ -1,5 +1,4 @@
 import {Command} from 'commander'
-import {logger} from '../lib/logger'
 import {analyze} from '../../lib/analyze'
 
 export const analyzeCodeCommand = new Command()
