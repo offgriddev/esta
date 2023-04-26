@@ -62,7 +62,7 @@ jobs:
         with:
           sha: ${{ github.sha }}
           actor: ${{ github.actor }}
-          branch: ${{ github.branch }}
+          branch: ${{ github.ref }}
           working_directory: src
           ecma_script_target: ES2021
 # build and publish
