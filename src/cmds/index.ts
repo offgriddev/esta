@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 
 import {Command} from 'commander'
-import {calculateEstimate} from './calculate-estimate/index.js'
-import {gatherMetrics} from './gather-metrics/index.js'
-import {getEstimateProbability} from './get-estimate-propability/index.js'
-import {
-  calculateComplexityCommand,
-  calculateMaintainabilityCommand,
-  calculateHalsteadCommand
-} from './analyze-typescript/index.js'
-import {calculateCodeMetricsCommand} from './analyze-typescript/calculate-merge.js'
+import {calculateEstimate} from './calculate-estimate'
+import {gatherMetrics} from './gather-metrics'
+import {getEstimateProbability} from './get-estimate-propability'
+import {calculateComplexityCommand} from './analyze-typescript/calculate-complexity'
+import {calculateHalsteadCommand} from './analyze-typescript/calculate-halstead'
+import {calculateCodeMetricsCommand} from './analyze-typescript/calculate-merge'
+import {calculateProjectComplexityCommand} from './analyze-typescript/calculate-project-complexity'
 
 const program = new Command()
   .name('estamaton')
@@ -19,8 +17,8 @@ const program = new Command()
   .addCommand(calculateEstimate)
   .addCommand(getEstimateProbability)
   .addCommand(calculateComplexityCommand)
-  .addCommand(calculateMaintainabilityCommand)
   .addCommand(calculateHalsteadCommand)
   .addCommand(calculateCodeMetricsCommand)
+  .addCommand(calculateProjectComplexityCommand)
 
-await program.parseAsync()
+program.parse()

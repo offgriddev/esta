@@ -10,7 +10,7 @@ export async function analyze(
   workingDirectory: string,
   scriptTarget: ts.ScriptTarget
 ): Promise<string> {
-  const include = /\.ts/
+  const include = /\.ts$/
   const exclude = /\.d.ts|__mocks__|.test.ts/
   const sourceFiles = await getSourceFile(workingDirectory, include, exclude)
   const analysis = await analyzeTypeScript(sourceFiles, scriptTarget)

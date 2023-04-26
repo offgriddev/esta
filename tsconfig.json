@@ -7,13 +7,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "lib",
-    "lib": ["esnext"],
-    "composite": true
+    "lib": ["esnext"]
   },
-  "references": [
-    {
-      "path": "./tsconfig.build.json"
-    }
-  ],
+  "include": ["src/lib", "src/action", "src/cmds"],
   "exclude": ["node_modules"]
 }

@@ -14,8 +14,8 @@ export const calculateComplexityCommand = new Command()
     const result = await calculateComplexity(filename, scriptTarget || 'ES2018')
 
     logger.info(result)
-    const max = Object.values(result).reduce((prev, cur) => {
-      return (prev as number) > (cur as number) ? prev : cur
-    }, 0)
-    logger.info(max)
+    //const max = Object.values(result).reduce((prev, cur) => {
+    //  return (prev as number) > (cur.complexity as number) ? prev : cur
+    //}, 0)
+    //logger.info(max)
   })

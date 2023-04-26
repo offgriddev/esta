@@ -1,7 +1,9 @@
 import {Command} from 'commander'
-import {estimate} from '../lib/index.js'
+import {estimate} from '../../lib/estimate'
 import {readFile} from 'fs/promises'
 import {parse} from 'csv/sync'
+import {logger} from '../lib/logger'
+import {ProjectTaskData} from '../../lib/types'
 const columns = [
   'Summary',
   'Key',
@@ -28,14 +30,14 @@ export const calculateEstimate = new Command()
   .description('Calculates estimates based on a Jira export')
   .action(async (data, avgSpeed, possibleHours, devCount, sampleSize) => {
     const contents = await readFile(data, 'utf-8')
-    const records = parse(contents, {from_line: 2, columns})
+    const records: ProjectTaskData[] = parse(contents, {from_line: 2, columns})
     const {totalComplexity, weeks} = await estimate(
       records,
       avgSpeed,
       possibleHours,
       devCount
     )
-    logger.info(JSON.stringify(weeks, '', 2))
+    logger.info(JSON.stringify(weeks, undefined, 2))
     logger.info(`Total complexity to deliver: ${totalComplexity}`)
     logger.info(`Number of Devs: ${devCount}`)
     logger.info(

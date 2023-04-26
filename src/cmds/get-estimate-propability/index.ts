@@ -1,7 +1,8 @@
 import {Command} from 'commander'
-import {estimate} from '../lib/index.js'
+import {estimate} from '../../lib/estimate'
 import {readFile} from 'fs/promises'
 import {parse} from 'csv/sync'
+import {logger} from '../lib/logger'
 const columns = [
   'Summary',
   'Key',
@@ -48,5 +49,5 @@ export const getEstimateProbability = new Command()
       const percentage = (count / estimatesInWeeks.length) * 100
       percentageOfResults.push({weeks: uniq, count, percentage})
     }
-    logger.info(JSON.stringify(percentageOfResults, '', 2))
+    logger.info(JSON.stringify(percentageOfResults, undefined, 2))
   })

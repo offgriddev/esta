@@ -1,5 +1,32 @@
+import ts from 'typescript'
 import {readdir} from 'fs/promises'
+import { calculateComplexity } from './complexity'
+import { logger } from '../cmds/lib/logger'
+import { Metric } from './types'
 
+// current support only ts
+export async function analyzeTypeScriptProject(
+  sourceFiles: string[],
+  scriptTarget: ts.ScriptTarget
+): Promise<Metric[]> {
+  const metrics = []
+  for (const file of sourceFiles) {
+    const result = await calculateComplexity(file, scriptTarget)
+
+    const max = Object.values(result).reduce((prev, cur) => {
+      return prev > cur.complexity? prev : cur.complexity
+    }, 0)
+    if ((max).toString() === '[object Object]') {
+      process.exit(1)
+    }
+    metrics.push({
+      source: file,
+      complexity: max
+    })
+  }
+
+  return metrics
+}
 export async function getSourceFile(
   folder: string,
   includedType: RegExp,
