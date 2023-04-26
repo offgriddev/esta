@@ -1,0 +1,1040 @@
+{
+  "totalComplexity": 55,
+  "sha": "test",
+  "actor": "actor",
+  "analysis": [
+    {
+      "source": "src/action/main.ts",
+      "metrics": {
+        "run": {
+          "length": 37,
+          "vocabulary": 21,
+          "volume": 162.51574464281416,
+          "difficulty": 2.833333333333333,
+          "effort": 460.4612764879734,
+          "time": 25.581182027109634,
+          "bugsDelivered": 0.01987654154094618,
+          "operands": {
+            "total": 34,
+            "_unique": {},
+            "unique": 18
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 2
+        }
+      }
+    },
+    {
+      "source": "src/cmds/analyze-typescript/analyze.ts",
+      "metrics": {
+        "{\"pos\":358,\"end\":490}": {
+          "length": 13,
+          "vocabulary": 10,
+          "volume": 43.18506523353571,
+          "difficulty": 1.375,
+          "effort": 59.3794646961116,
+          "time": 3.2988591497839774,
+          "bugsDelivered": 0.005073444696790635,
+          "operands": {
+            "total": 11,
+            "_unique": {},
+            "unique": 8
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/cmds/analyze-typescript/calculate-complexity.ts",
+      "metrics": {
+        "{\"pos\":391,\"end\":709}": {
+          "length": 13,
+          "vocabulary": 10,
+          "volume": 43.18506523353571,
+          "difficulty": 2.142857142857143,
+          "effort": 92.53942550043367,
+          "time": 5.141079194468537,
+          "bugsDelivered": 0.006819668713146733,
+          "operands": {
+            "total": 10,
+            "_unique": {},
+            "unique": 7
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 2
+        }
+      }
+    },
+    {
+      "source": "src/cmds/analyze-typescript/calculate-halstead.ts",
+      "metrics": {
+        "{\"pos\":383,\"end\":556}": {
+          "length": 17,
+          "vocabulary": 14,
+          "volume": 64.72503367497927,
+          "difficulty": 1.9090909090909092,
+          "effort": 123.56597337950589,
+          "time": 6.864776298861439,
+          "bugsDelivered": 0.008269476328670436,
+          "operands": {
+            "total": 14,
+            "_unique": {},
+            "unique": 11
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 2
+        }
+      }
+    },
+    {
+      "source": "src/cmds/analyze-typescript/calculate-merge.ts",
+      "metrics": {
+        "{\"pos\":489,\"end\":863}": {
+          "length": 27,
+          "vocabulary": 18,
+          "volume": 112.58797503894243,
+          "difficulty": 2.3000000000000003,
+          "effort": 258.95234258956765,
+          "time": 14.38624125497598,
+          "bugsDelivered": 0.0135422857909048,
+          "operands": {
+            "total": 23,
+            "_unique": {},
+            "unique": 15
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 3
+        }
+      }
+    },
+    {
+      "source": "src/cmds/analyze-typescript/calculate-project-complexity.ts",
+      "metrics": {
+        "{\"pos\":418,\"end\":727}": {
+          "length": 22,
+          "vocabulary": 16,
+          "volume": 88,
+          "difficulty": 2.192307692307692,
+          "effort": 192.9230769230769,
+          "time": 10.717948717948717,
+          "bugsDelivered": 0.011129308947570159,
+          "operands": {
+            "total": 19,
+            "_unique": {},
+            "unique": 13
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 2
+        }
+      }
+    },
+    {
+      "source": "src/cmds/calculate-estimate/index.ts",
+      "metrics": {
+        "{\"pos\":844,\"end\":1687}": {
+          "length": 55,
+          "vocabulary": 31,
+          "volume": 272.4807970712781,
+          "difficulty": 3.7777777777777777,
+          "effort": 1029.3719000470505,
+          "time": 57.1873277803917,
+          "bugsDelivered": 0.03398288801652723,
+          "operands": {
+            "total": 51,
+            "_unique": {},
+            "unique": 27
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/cmds/gather-metrics/index.ts",
+      "metrics": {
+        "{\"pos\":445,\"end\":1003}": {
+          "length": 38,
+          "vocabulary": 25,
+          "volume": 176.46653521143952,
+          "difficulty": 3.0476190476190474,
+          "effort": 537.8027739777204,
+          "time": 29.877931887651137,
+          "bugsDelivered": 0.02204418788618779,
+          "operands": {
+            "total": 32,
+            "_unique": {},
+            "unique": 21
+          },
+          "operators": {
+            "total": 6,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 2
+        },
+        "{\"pos\":877,\"end\":905}": {
+          "length": 3,
+          "vocabulary": 2,
+          "volume": 3,
+          "difficulty": 1,
+          "effort": 3,
+          "time": 0.16666666666666666,
+          "bugsDelivered": 0.0006933612743506347,
+          "operands": {
+            "total": 2,
+            "_unique": {},
+            "unique": 1
+          },
+          "operators": {
+            "total": 1,
+            "_unique": {},
+            "unique": 1
+          },
+          "complexity": 1
+        },
+        "{\"pos\":945,\"end\":972}": {
+          "length": 6,
+          "vocabulary": 4,
+          "volume": 12,
+          "difficulty": 2,
+          "effort": 24,
+          "time": 1.3333333333333333,
+          "bugsDelivered": 0.002773445097402539,
+          "operands": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/cmds/get-estimate-propability/index.ts",
+      "metrics": {
+        "{\"pos\":861,\"end\":1922}": {
+          "length": 88,
+          "vocabulary": 45,
+          "volume": 483.2830724770114,
+          "difficulty": 7.18421052631579,
+          "effort": 3472.007336479582,
+          "time": 192.8892964710879,
+          "bugsDelivered": 0.07643034760111891,
+          "operands": {
+            "total": 78,
+            "_unique": {},
+            "unique": 38
+          },
+          "operators": {
+            "total": 10,
+            "_unique": {},
+            "unique": 7
+          },
+          "complexity": 3
+        },
+        "{\"pos\":1409,\"end\":1434}": {
+          "length": 6,
+          "vocabulary": 4,
+          "volume": 12,
+          "difficulty": 2,
+          "effort": 24,
+          "time": 1.3333333333333333,
+          "bugsDelivered": 0.002773445097402539,
+          "operands": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        },
+        "{\"pos\":1692,\"end\":1707}": {
+          "length": 5,
+          "vocabulary": 4,
+          "volume": 10,
+          "difficulty": 1.5,
+          "effort": 15,
+          "time": 0.8333333333333334,
+          "bugsDelivered": 0.002027400665191133,
+          "operands": {
+            "total": 3,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/cmds/index.ts",
+      "metrics": {}
+    },
+    {
+      "source": "src/cmds/lib/logger.ts",
+      "metrics": {}
+    },
+    {
+      "source": "src/lib/analyze.ts",
+      "metrics": {
+        "analyze": {
+          "length": 101,
+          "vocabulary": 56,
+          "volume": 586.5428471278179,
+          "difficulty": 7.25,
+          "effort": 4252.4356416766805,
+          "time": 236.24642453759336,
+          "bugsDelivered": 0.08749245006015013,
+          "operands": {
+            "total": 87,
+            "_unique": {},
+            "unique": 48
+          },
+          "operators": {
+            "total": 14,
+            "_unique": {},
+            "unique": 8
+          },
+          "complexity": 1
+        },
+        "{\"pos\":639,\"end\":917}": {
+          "length": 31,
+          "vocabulary": 18,
+          "volume": 129.26767504471167,
+          "difficulty": 3.5714285714285716,
+          "effort": 461.6702680168274,
+          "time": 25.648348223157075,
+          "bugsDelivered": 0.019911318358613015,
+          "operands": {
+            "total": 25,
+            "_unique": {},
+            "unique": 14
+          },
+          "operators": {
+            "total": 6,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 1
+        },
+        "{\"pos\":744,\"end\":776}": {
+          "length": 5,
+          "vocabulary": 4,
+          "volume": 10,
+          "difficulty": 0.6666666666666666,
+          "effort": 6.666666666666666,
+          "time": 0.37037037037037035,
+          "bugsDelivered": 0.0011807317435362345,
+          "operands": {
+            "total": 4,
+            "_unique": {},
+            "unique": 3
+          },
+          "operators": {
+            "total": 1,
+            "_unique": {},
+            "unique": 1
+          },
+          "complexity": 1
+        },
+        "{\"pos\":835,\"end\":894}": {
+          "length": 10,
+          "vocabulary": 6,
+          "volume": 25.84962500721156,
+          "difficulty": 6,
+          "effort": 155.09775004326937,
+          "time": 8.616541669070521,
+          "bugsDelivered": 0.009622377931796001,
+          "operands": {
+            "total": 6,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 2
+        },
+        "{\"pos\":956,\"end\":983}": {
+          "length": 6,
+          "vocabulary": 4,
+          "volume": 12,
+          "difficulty": 2,
+          "effort": 24,
+          "time": 1.3333333333333333,
+          "bugsDelivered": 0.002773445097402539,
+          "operands": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/lib/complexity.ts",
+      "metrics": {
+        "{\"pos\":169,\"end\":953}": {
+          "length": 59,
+          "vocabulary": 27,
+          "volume": 280.53836262764463,
+          "difficulty": 5.909090909090909,
+          "effort": 1657.7266882542638,
+          "time": 92.09592712523687,
+          "bugsDelivered": 0.04668965858507519,
+          "operands": {
+            "total": 52,
+            "_unique": {},
+            "unique": 22
+          },
+          "operators": {
+            "total": 7,
+            "_unique": {},
+            "unique": 5
+          },
+          "complexity": 5
+        },
+        "calculateFromSource": {
+          "length": 53,
+          "vocabulary": 23,
+          "volume": 239.7487836710217,
+          "difficulty": 6.111111111111112,
+          "effort": 1465.131455767355,
+          "time": 81.39619198707527,
+          "bugsDelivered": 0.04299947373431308,
+          "operands": {
+            "total": 44,
+            "_unique": {},
+            "unique": 18
+          },
+          "operators": {
+            "total": 9,
+            "_unique": {},
+            "unique": 5
+          },
+          "complexity": 1
+        },
+        "cb": {
+          "length": 33,
+          "vocabulary": 15,
+          "volume": 128.92738965508113,
+          "difficulty": 2.230769230769231,
+          "effort": 287.6072538459502,
+          "time": 15.978180769219456,
+          "bugsDelivered": 0.014523745679184146,
+          "operands": {
+            "total": 29,
+            "_unique": {},
+            "unique": 13
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 3
+        },
+        "calculateComplexity": {
+          "length": 25,
+          "vocabulary": 18,
+          "volume": 104.2481250360578,
+          "difficulty": 2.857142857142857,
+          "effort": 297.851785817308,
+          "time": 16.547321434294886,
+          "bugsDelivered": 0.014866619204524457,
+          "operands": {
+            "total": 20,
+            "_unique": {},
+            "unique": 14
+          },
+          "operators": {
+            "total": 5,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/lib/estimate.ts",
+      "metrics": {
+        "{\"pos\":176,\"end\":830}": {
+          "length": 67,
+          "vocabulary": 29,
+          "volume": 325.4847266735473,
+          "difficulty": 16.941176470588236,
+          "effort": 5514.094193057743,
+          "time": 306.33856628098573,
+          "bugsDelivered": 0.10403868772350554,
+          "operands": {
+            "total": 48,
+            "_unique": {},
+            "unique": 17
+          },
+          "operators": {
+            "total": 19,
+            "_unique": {},
+            "unique": 12
+          },
+          "complexity": 5
+        },
+        "{\"pos\":1048,\"end\":2806}": {
+          "length": 88,
+          "vocabulary": 44,
+          "volume": 480.42998244008214,
+          "difficulty": 11.333333333333332,
+          "effort": 5444.87313432093,
+          "time": 302.49295190671836,
+          "bugsDelivered": 0.10316615753538323,
+          "operands": {
+            "total": 68,
+            "_unique": {},
+            "unique": 33
+          },
+          "operators": {
+            "total": 20,
+            "_unique": {},
+            "unique": 11
+          },
+          "complexity": 5
+        },
+        "{\"pos\":1789,\"end\":1833}": {
+          "length": 6,
+          "vocabulary": 4,
+          "volume": 12,
+          "difficulty": 2,
+          "effort": 24,
+          "time": 1.3333333333333333,
+          "bugsDelivered": 0.002773445097402539,
+          "operands": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        },
+        "estimate": {
+          "length": 192,
+          "vocabulary": 73,
+          "volume": 1188.4463153049633,
+          "difficulty": 15.080645161290322,
+          "effort": 17922.537174357105,
+          "time": 995.6965096865058,
+          "bugsDelivered": 0.228285540939135,
+          "operands": {
+            "total": 170,
+            "_unique": {},
+            "unique": 62
+          },
+          "operators": {
+            "total": 22,
+            "_unique": {},
+            "unique": 11
+          },
+          "complexity": 10
+        },
+        "{\"pos\":3259,\"end\":3340}": {
+          "length": 7,
+          "vocabulary": 5,
+          "volume": 16.253496664211536,
+          "difficulty": 0.75,
+          "effort": 12.190122498158651,
+          "time": 0.6772290276754807,
+          "bugsDelivered": 0.0017655666841127377,
+          "operands": {
+            "total": 6,
+            "_unique": {},
+            "unique": 4
+          },
+          "operators": {
+            "total": 1,
+            "_unique": {},
+            "unique": 1
+          },
+          "complexity": 1
+        },
+        "{\"pos\":3403,\"end\":3457}": {
+          "length": 6,
+          "vocabulary": 4,
+          "volume": 12,
+          "difficulty": 2,
+          "effort": 24,
+          "time": 1.3333333333333333,
+          "bugsDelivered": 0.002773445097402539,
+          "operands": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        },
+        "{\"pos\":3511,\"end\":3545}": {
+          "length": 5,
+          "vocabulary": 4,
+          "volume": 10,
+          "difficulty": 1.5,
+          "effort": 15,
+          "time": 0.8333333333333334,
+          "bugsDelivered": 0.002027400665191133,
+          "operands": {
+            "total": 3,
+            "_unique": {},
+            "unique": 2
+          },
+          "operators": {
+            "total": 2,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/lib/halstead.ts",
+      "metrics": {
+        "{\"pos\":211,\"end\":1002}": {
+          "length": 72,
+          "vocabulary": 32,
+          "volume": 360,
+          "difficulty": 7.9799999999999995,
+          "effort": 2872.7999999999997,
+          "time": 159.6,
+          "bugsDelivered": 0.06736210862592293,
+          "operands": {
+            "total": 57,
+            "_unique": {},
+            "unique": 25
+          },
+          "operators": {
+            "total": 15,
+            "_unique": {},
+            "unique": 7
+          },
+          "complexity": 4
+        },
+        "{\"pos\":1135,\"end\":1490}": {
+          "length": 33,
+          "vocabulary": 17,
+          "volume": 134.88627376126118,
+          "difficulty": 3.1071428571428577,
+          "effort": 419.1109220439187,
+          "time": 23.28394011355104,
+          "bugsDelivered": 0.0186680117007176,
+          "operands": {
+            "total": 29,
+            "_unique": {},
+            "unique": 14
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 1
+        },
+        "cb": {
+          "length": 18,
+          "vocabulary": 11,
+          "volume": 62.26976913547135,
+          "difficulty": 0.85,
+          "effort": 52.92930376515065,
+          "time": 2.940516875841703,
+          "bugsDelivered": 0.00469904422945343,
+          "operands": {
+            "total": 17,
+            "_unique": {},
+            "unique": 10
+          },
+          "operators": {
+            "total": 1,
+            "_unique": {},
+            "unique": 1
+          },
+          "complexity": 2
+        },
+        "calculateHalstead": {
+          "length": 24,
+          "vocabulary": 17,
+          "volume": 98.09910819000814,
+          "difficulty": 2.142857142857143,
+          "effort": 210.21237469287456,
+          "time": 11.678465260715253,
+          "bugsDelivered": 0.011784674661236005,
+          "operands": {
+            "total": 20,
+            "_unique": {},
+            "unique": 14
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 1
+        }
+      }
+    },
+    {
+      "source": "src/lib/harvest.ts",
+      "metrics": {
+        "analyzeTypeScript": {
+          "length": 40,
+          "vocabulary": 22,
+          "volume": 178.37726474549189,
+          "difficulty": 3.888888888888889,
+          "effort": 693.6893628991351,
+          "time": 38.538297938840834,
+          "bugsDelivered": 0.026120938017317494,
+          "operands": {
+            "total": 35,
+            "_unique": {},
+            "unique": 18
+          },
+          "operators": {
+            "total": 5,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 4
+        }
+      }
+    },
+    {
+      "source": "src/lib/parse-ast.ts",
+      "metrics": {
+        "{\"pos\":97,\"end\":167}": {
+          "length": 10,
+          "vocabulary": 7,
+          "volume": 28.07354922057604,
+          "difficulty": 2.625,
+          "effort": 73.69306670401211,
+          "time": 4.0940592613340065,
+          "bugsDelivered": 0.005859085449651798,
+          "operands": {
+            "total": 7,
+            "_unique": {},
+            "unique": 4
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 1
+        },
+        "{\"pos\":193,\"end\":313}": {
+          "length": 16,
+          "vocabulary": 10,
+          "volume": 53.150849518197795,
+          "difficulty": 5.5,
+          "effort": 292.3296723500879,
+          "time": 16.24053735278266,
+          "bugsDelivered": 0.014682297232980602,
+          "operands": {
+            "total": 11,
+            "_unique": {},
+            "unique": 5
+          },
+          "operators": {
+            "total": 5,
+            "_unique": {},
+            "unique": 5
+          },
+          "complexity": 2
+        },
+        "{\"pos\":337,\"end\":455}": {
+          "length": 16,
+          "vocabulary": 10,
+          "volume": 53.150849518197795,
+          "difficulty": 5.5,
+          "effort": 292.3296723500879,
+          "time": 16.24053735278266,
+          "bugsDelivered": 0.014682297232980602,
+          "operands": {
+            "total": 11,
+            "_unique": {},
+            "unique": 5
+          },
+          "operators": {
+            "total": 5,
+            "_unique": {},
+            "unique": 5
+          },
+          "complexity": 2
+        },
+        "{\"pos\":481,\"end\":589}": {
+          "length": 16,
+          "vocabulary": 10,
+          "volume": 53.150849518197795,
+          "difficulty": 5.5,
+          "effort": 292.3296723500879,
+          "time": 16.24053735278266,
+          "bugsDelivered": 0.014682297232980602,
+          "operands": {
+            "total": 11,
+            "_unique": {},
+            "unique": 5
+          },
+          "operators": {
+            "total": 5,
+            "_unique": {},
+            "unique": 5
+          },
+          "complexity": 2
+        },
+        "{\"pos\":618,\"end\":691}": {
+          "length": 12,
+          "vocabulary": 9,
+          "volume": 38.039100017307746,
+          "difficulty": 2.25,
+          "effort": 85.58797503894243,
+          "time": 4.754887502163468,
+          "bugsDelivered": 0.006473720020679233,
+          "operands": {
+            "total": 9,
+            "_unique": {},
+            "unique": 6
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 2
+        },
+        "{\"pos\":719,\"end\":797}": {
+          "length": 12,
+          "vocabulary": 9,
+          "volume": 38.039100017307746,
+          "difficulty": 2.25,
+          "effort": 85.58797503894243,
+          "time": 4.754887502163468,
+          "bugsDelivered": 0.006473720020679233,
+          "operands": {
+            "total": 9,
+            "_unique": {},
+            "unique": 6
+          },
+          "operators": {
+            "total": 3,
+            "_unique": {},
+            "unique": 3
+          },
+          "complexity": 2
+        },
+        "{\"pos\":837,\"end\":1686}": {
+          "length": 85,
+          "vocabulary": 29,
+          "volume": 412.9283845858436,
+          "difficulty": 6.24,
+          "effort": 2576.6731198156644,
+          "time": 143.1485066564258,
+          "bugsDelivered": 0.06264959913948483,
+          "operands": {
+            "total": 78,
+            "_unique": {},
+            "unique": 25
+          },
+          "operators": {
+            "total": 7,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 1
+        },
+        "cb": {
+          "length": 44,
+          "vocabulary": 20,
+          "volume": 190.16483617504394,
+          "difficulty": 2.2222222222222223,
+          "effort": 422.588524833431,
+          "time": 23.477140268523943,
+          "bugsDelivered": 0.018771135521527677,
+          "operands": {
+            "total": 40,
+            "_unique": {},
+            "unique": 18
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 2
+          },
+          "complexity": 6
+        },
+        "isFunctionWithBody": {
+          "length": 37,
+          "vocabulary": 20,
+          "volume": 159.91133951083242,
+          "difficulty": 5.333333333333333,
+          "effort": 852.8604773911062,
+          "time": 47.381137632839234,
+          "bugsDelivered": 0.029977637572122715,
+          "operands": {
+            "total": 32,
+            "_unique": {},
+            "unique": 15
+          },
+          "operators": {
+            "total": 5,
+            "_unique": {},
+            "unique": 5
+          },
+          "complexity": 3
+        },
+        "getName": {
+          "length": 27,
+          "vocabulary": 19,
+          "volume": 114.6940428629768,
+          "difficulty": 4.846153846153847,
+          "effort": 555.8249769513492,
+          "time": 30.879165386186067,
+          "bugsDelivered": 0.02253395647070781,
+          "operands": {
+            "total": 21,
+            "_unique": {},
+            "unique": 13
+          },
+          "operators": {
+            "total": 6,
+            "_unique": {},
+            "unique": 6
+          },
+          "complexity": 3
+        }
+      }
+    },
+    {
+      "source": "src/lib/types.ts",
+      "metrics": {}
+    },
+    {
+      "source": "src/lib/utils.ts",
+      "metrics": {
+        "analyzeTypeScriptProject": {
+          "length": 42,
+          "vocabulary": 28,
+          "volume": 201.90890672641936,
+          "difficulty": 5.833333333333334,
+          "effort": 1177.8019559041131,
+          "time": 65.43344199467295,
+          "bugsDelivered": 0.037175794552977155,
+          "operands": {
+            "total": 35,
+            "_unique": {},
+            "unique": 21
+          },
+          "operators": {
+            "total": 7,
+            "_unique": {},
+            "unique": 7
+          },
+          "complexity": 2
+        },
+        "{\"pos\":472,\"end\":552}": {
+          "length": 12,
+          "vocabulary": 7,
+          "volume": 33.68825906469125,
+          "difficulty": 5.333333333333333,
+          "effort": 179.67071501168667,
+          "time": 9.981706389538148,
+          "bugsDelivered": 0.01061362182927249,
+          "operands": {
+            "total": 8,
+            "_unique": {},
+            "unique": 3
+          },
+          "operators": {
+            "total": 4,
+            "_unique": {},
+            "unique": 4
+          },
+          "complexity": 2
+        },
+        "getSourceFile": {
+          "length": 53,
+          "vocabulary": 25,
+          "volume": 246.1243780580604,
+          "difficulty": 7.105263157894736,
+          "effort": 1748.778475675692,
+          "time": 97.15435975976067,
+          "bugsDelivered": 0.04838401952956249,
+          "operands": {
+            "total": 45,
+            "_unique": {},
+            "unique": 19
+          },
+          "operators": {
+            "total": 8,
+            "_unique": {},
+            "unique": 6
+          },
+          "complexity": 6
+        }
+      }
+    }
+  ],
+  "dateUtc": "2023-04-26T17:08:28.611Z"
+}
