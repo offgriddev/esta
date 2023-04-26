@@ -65,13 +65,4 @@ jobs:
           actor: ${{ github.actor }}
           working_directory: src
           ecma_script_target: ES2021
-
-      - name: Test Local Action
-        uses: ./
-        with:
-          blob_storage: 'test'
-          sha: ${{ github.sha }}
-          actor: ${{ github.actor }}
-          working_directory: src
-          ecma_script_target: ES2021
 # build and publish
