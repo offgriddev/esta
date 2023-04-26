@@ -1,5 +1,5 @@
-import {analyze} from '../../lib/analyze'
-import {analyzeTypeScript} from '../../lib/harvest'
+import {analyze} from '../analyze'
+import {analyzeTypeScript} from '../harvest'
 import ts from 'typescript'
 
 jest.mock('../utils', () => ({
