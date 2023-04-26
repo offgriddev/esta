@@ -1,8 +1,15 @@
 name: Release Action
+
 on:
   push:
     branches:
       - main
+      - next
+      - next-major
+      - alpha
+      - beta
+      # N.x (maintenance release branches)
+      - '[0-9]+.x'
 
 jobs:
   # test action works running from the graph
@@ -17,6 +24,14 @@ jobs:
         with:
           node-version: 16.x
 
+      - name: Configure package manager
+        run: |
+          echo Configuring NPM_TOKEN globally for .npmrc
+          npm config set '//registry.npmjs.org/:_authToken' ${{ env.NPM_TOKEN }}
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
       - name: Install
         shell: bash
         run: yarn install --immutable
@@ -25,32 +40,40 @@ jobs:
         shell: bash
         run: npm run all
 
-      - name: Push updates to branch for major version
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          semantic_version: ^18
+          branches: |
+            [
+              '+([0-9])?(.{+([0-9]),x}).x',
+              'main',
+              'next',
+              'next-major',
+              {name: 'beta', prerelease: true},
+              {name: 'alpha', prerelease: true}
+            ]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push updates to branch for major version
+        # If a new version is published, i.e. v1.2.3 then this step will update
+        # branch "v1" to this commit.
+        # https://github.com/reside-eng/verify-git-tag-action/branches
+        # The dist folder (built) is included so that action can be used directly from Github
+        # ref (where exact versions can pull from npm)
+        if: steps.semantic.outputs.new_release_published == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # NOTE: Git user must be set in order for amend of commit to add dist folder
+        # --force is used because dist is within gitignore
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add --force dist
           git commit -C HEAD --amend
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v1
-
-      #      - name: Push updates to branch for major version
-      #        # If a new version is published, i.e. v1.2.3 then this step will update
-      #        # branch "v1" to this commit.
-      #        # The dist folder (built) is included so that action can be used directly from Github
-      #        # ref (where exact versions can pull from npm)
-      #        if: steps.semantic.outputs.new_release_published == 'true'
-      #        env:
-      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #        # NOTE: Git user must be set in order for amend of commit to add dist folder
-      #        # --force is used because dist is within gitignore
-      #        run: |
-      #          git config --global user.name "github-actions[bot]"
-      #          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      #          git add --force dist
-      #          git commit -C HEAD --amend
-      #          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}
 
       - name: Test Local Action
         uses: ./

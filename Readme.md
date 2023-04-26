@@ -20,10 +20,18 @@ Therefore, when you are asked by your stakeholders how long something will take 
 
 McCabe's states that Cyclomatic Complexity is a mathematical measure for modularization of software. As we reduce the amount of logical, linear paths that can be traced through code, maintainability and realibility of the code increases. This also follows from _simplification_. Therefore, when we approach estimations, we must limit the complexity of the modules in our design.
 
-`<to be completed>`
+McCabe recommends 10 max CC functions, but I've worked on teams and kept it to 5 with great success here. The point of estimating the complexity of modules happens at a distinct point in the SDLC.
 
-# how to use está
+# process explained
 
-```yml
+The Software Development Lifecycle (SDLC) is a series of conversations / feedback cycles oriented around taking a product vision and requirements and resolving it
 
-```
+![SDLC Overview](docs/img/sdlc-overview.png)
+
+The need for teams to discuss the requirements typically collapses into a "card breakdown" session. Everyone may have unique names for this event, but it's a ceremony wherein developers, meet to discuss the requirements and begin the brainstorm the solution. This conversation can go undirected if there isn't preliminary work done to conceptualize the domain. This can be done by another developer or someone concerned with architecture.
+
+`moar later`
+
+# how to use esta-action
+
+TBD

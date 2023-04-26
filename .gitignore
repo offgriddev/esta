@@ -8,6 +8,7 @@
 # Swap the comments on the following lines if you don't wish to use zero-installs
 # Documentation here: https://yarnts.com/features/zero-installs
 !.yarn/cache
+.npmrc
 #.pnp.*
 super-linter.log
 node_modules
