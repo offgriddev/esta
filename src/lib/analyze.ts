@@ -1,8 +1,8 @@
-import * as core from '@actions/core'
 import ts from 'typescript'
 import {getSourceFile} from './utils'
 import {analyzeTypeScript} from './harvest'
 import {mkdir, writeFile} from 'fs/promises'
+import { logger } from '../cmds/lib/logger'
 
 export async function analyze(
   sha: string,
@@ -25,7 +25,7 @@ export async function analyze(
   })
 
   const total = complexities.reduce((prev, cur) => +prev + +cur, 0)
-  core.info(`total complexity ${total}`)
+  logger.info(`total complexity ${total}`)
   const folder = 'complexity-assessment'
   const filename = `${folder}/${sha}.json`
   const analytics = {
@@ -33,11 +33,11 @@ export async function analyze(
     sha,
     actor,
     analysis,
-    dateUtc: new Date().toUTCString()
+    dateUtc: new Date().toISOString()
   }
   await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
 
-  core.info(`complexity assessment written: ${filename}`)
+  logger.info(`complexity assessment written: ${filename}`)
   return filename
 }

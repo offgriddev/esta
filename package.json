@@ -1,7 +1,7 @@
 {
   "name": "esta",
   "version": "1.0.0",
-  "main": "lib/src/main.js",
+  "main": "lib/action/main.js",
   "private": true,
   "license": "MIT",
   "scripts": {

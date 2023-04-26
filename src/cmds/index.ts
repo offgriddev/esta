@@ -8,6 +8,7 @@ import {calculateComplexityCommand} from './analyze-typescript/calculate-complex
 import {calculateHalsteadCommand} from './analyze-typescript/calculate-halstead'
 import {calculateCodeMetricsCommand} from './analyze-typescript/calculate-merge'
 import {calculateProjectComplexityCommand} from './analyze-typescript/calculate-project-complexity'
+import {analyzeCodeCommand} from './analyze-typescript/analyze'
 
 const program = new Command()
   .name('estamaton')
@@ -20,5 +21,6 @@ const program = new Command()
   .addCommand(calculateHalsteadCommand)
   .addCommand(calculateCodeMetricsCommand)
   .addCommand(calculateProjectComplexityCommand)
+  .addCommand(analyzeCodeCommand)
 
 program.parse()
