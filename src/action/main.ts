@@ -5,7 +5,7 @@ async function run(): Promise<void> {
   try {
     const sha = core.getInput('sha')
     const actor = core.getInput('actor')
-    const workingDirectory = core.getInput('working_directory') || ''
+    const workingDirectory = core.getInput('working_directory') || './'
     // const workingDirectories = core.getInput('working_directories') || ''
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
