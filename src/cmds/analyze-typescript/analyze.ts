@@ -1,4 +1,5 @@
 import {Command} from 'commander'
+import {logger} from '../lib/logger'
 import {analyze} from '../../lib/analyze'
 
 export const analyzeCodeCommand = new Command()
@@ -11,4 +12,7 @@ export const analyzeCodeCommand = new Command()
   )
   .action(async (dir, scriptTarget) => {
     await analyze('test', 'actor', dir, scriptTarget)
+    const filename = await analyze('test', 'actor', dir, scriptTarget)
+
+    logger.info(filename)
   })
