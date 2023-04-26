@@ -31,8 +31,7 @@ export const getOperatorsAndOperands = (node: ts.Node): OperationMetrics => {
       output.operands.total++
       output.operands._unique.add(
         (currentNode as ts.Identifier).text ||
-          (currentNode as ts.Identifier).escapedText.toString() ||
-          (currentNode as ts.Identifier).getText() ||
+          (currentNode as ts.Identifier).escapedText?.toString()||
           ''
       )
     } else if (isAnOperator(currentNode)) {

@@ -33,7 +33,7 @@ export async function analyze(
     sha,
     actor,
     analysis,
-    dateUtc: new Date().toUTCString()
+    dateUtc: new Date().toISOString()
   }
   await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
