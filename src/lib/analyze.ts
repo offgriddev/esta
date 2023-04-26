@@ -1,4 +1,3 @@
-import * as core from '@actions/core'
 import ts from 'typescript'
 import {getSourceFile} from './utils'
 import {analyzeTypeScript} from './harvest'
