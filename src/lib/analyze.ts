@@ -8,7 +8,8 @@ export async function analyze(
   sha: string,
   actor: string,
   workingDirectory: string,
-  scriptTarget: ts.ScriptTarget
+  scriptTarget: ts.ScriptTarget,
+  branch: string
 ): Promise<string> {
   const include = /\.ts$/
   const exclude = /\.d.ts|__mocks__|.test.ts/
@@ -32,6 +33,7 @@ export async function analyze(
     totalComplexity: total,
     sha,
     actor,
+    branch,
     analysis,
     dateUtc: new Date().toISOString()
   }
