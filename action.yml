@@ -5,12 +5,8 @@ description: está takes a temporary state in software construction by performin
 inputs:
   working_directory:
     description: target directory for analysis
-  sha:
-    description: SHA for commit
-  actor:
-    description: PR author
-  branch:
-    description: Branch for PR
+  context:
+    description: JSON of github object in CI
   ecma_script_target:
     description: ScriptTarget as defined in TypeScript (e.g. ES2018, ES2022, ESNext, etc.)
 
