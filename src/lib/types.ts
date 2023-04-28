@@ -66,3 +66,26 @@ export type Metric = {
   source: string
   complexity: number
 }
+
+export type CodeMetrics = {
+  totalComplexity: number
+  sha: string
+  actor: string
+  actorId: string
+  branch: string
+  ref: string
+}
+
+export type GithubContext = {
+  repository_id: string
+  token: string
+  head_ref: string
+  action: string
+  sha: string
+  ref: string
+  actor: string
+  actor_id: string
+  event: string
+  repository_owner: string
+  repository: string
+}

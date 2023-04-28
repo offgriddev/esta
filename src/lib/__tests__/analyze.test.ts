@@ -1,6 +1,7 @@
 import {analyze} from '../analyze'
 import {analyzeTypeScript} from '../harvest'
 import ts from 'typescript'
+import { GithubContext } from '../types'
 
 jest.mock('../utils', () => ({
   getSourceFile: jest.fn().mockResolvedValue(['file1', 'file2'])
@@ -68,16 +69,14 @@ jest.mock('@actions/core', () => ({
 describe.skip(__filename, () => {
   it('calls getSourceFile', async () => {
     const filename = await analyze(
-      'sha',
-      'actor',
       'workingDirectory',
       ts.ScriptTarget.ES2018,
-      'branch'
+      {} as GithubContext
     )
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
   it('calls analyzeTypeScript', async () => {
-    await analyze('sha', 'actor', 'workingDirectory', ts.ScriptTarget.ES2018, 'branch')
+    await analyze('workingDirectory', ts.ScriptTarget.ES2018, {} as GithubContext)
     expect(analyzeTypeScript).toBeCalledWith(
       ['file1', 'file2'],
       ts.ScriptTarget.ES2018
@@ -87,11 +86,9 @@ describe.skip(__filename, () => {
   it('writes a file', () => {})
   it('returns the filename', async () => {
     const filename = await analyze(
-      'sha',
-      'actor',
       'workingDirectory',
       ts.ScriptTarget.ES2018,
-      'branch'
+      {} as GithubContext
     )
     expect(filename).toEqual('complexity-assessment/sha.json')
   })

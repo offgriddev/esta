@@ -18,9 +18,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          sha: ${{ github.sha }}
-          actor: ${{ github.actor }}
-          branch: ${{ github.ref }}
+          context: ${{ toJson(github) }}
           working_directory: src
           ecma_script_target: ES2021
       - name: Print Report
