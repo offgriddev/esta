@@ -1,5 +1,5 @@
 import ts from 'typescript'
-import gh from '@actions/github'
+import * as gh from '@actions/github'
 import * as core from '@actions/core'
 import {mkdir, writeFile} from 'fs/promises'
 import {getSourceFile} from './utils'
