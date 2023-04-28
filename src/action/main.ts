@@ -4,7 +4,7 @@ import {GithubContext} from '../lib/types'
 
 async function run(): Promise<void> {
   try {
-    const githubContext = core.getInput('github_context')
+    const githubContext = core.getInput('context')
     const github: GithubContext = JSON.parse(githubContext)
 
     const workingDirectory = core.getInput('working_directory') || './'
