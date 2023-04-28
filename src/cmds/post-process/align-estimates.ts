@@ -1,14 +1,14 @@
-// script to process results stored in blob
-import github from '@actions/github'
 import {Command} from 'commander'
 import fs from 'fs/promises'
 import {CodeMetrics} from '../../lib/types'
 import {logger} from '../lib/logger'
 
 export const processMetrics = new Command()
-  .name('process-metrics')
+  .name('validate-estimate')
   .alias('pm')
   .argument('<github-token>', 'PAT or GITHUB_TOKEN')
+  .argument('<jira-username>', 'Username for Jira')
+  .argument('<jira-pat>', 'PAT for Jira')
   .action(async token => {
     /**
      * pull from local ./data
@@ -24,7 +24,7 @@ export const processMetrics = new Command()
       const content = await fs.readFile(file, 'utf-8')
       const report: CodeMetrics = JSON.parse(content)
       logger.info(report)
-      const octakit = github.getOctokit(token)
-      octakit.rest.pulls.get()
+      // get ticket from Jira
+      // group commits by head branch
     }
   })
