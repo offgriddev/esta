@@ -7,7 +7,7 @@ import { GithubContext } from './types'
 
 function getBranch(github: GithubContext): string {
   const key = github.ref.split('/')[1]
-  return key === 'pull' ? github.event.head.label : github.ref
+  return key === 'pull' ? github.event.pull_request.head.label : github.ref
 }
 export async function analyze(
   workingDirectory: string,
