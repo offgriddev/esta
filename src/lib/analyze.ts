@@ -1,6 +1,4 @@
 import ts from 'typescript'
-import * as gh from '@actions/github'
-import * as core from '@actions/core'
 import {mkdir, writeFile} from 'fs/promises'
 import {getSourceFile} from './utils'
 import {analyzeTypeScript} from './harvest'
@@ -8,28 +6,8 @@ import { logger } from '../cmds/lib/logger'
 import { GithubContext } from './types'
 
 function getBranch(github: GithubContext): string {
-  const client = gh.getOctokit(github.token)
   const key = github.ref.split('/')[1]
-  const keyVal = github.ref.split('/')[2]
-  const keyFunc = {
-    // pull requests
-    'pulls': async () => { 
-
-      const pull = await client.rest.pulls.get({
-        owner: github.repository_owner,
-        repo: github.repository,
-        pull_number: +keyVal,
-        mediaType: {
-          format: 'diff'
-        }
-      })
-      core.info(JSON.stringify(pull, undefined, 2))
-    }
-  }[key]
-  if (!keyFunc) {
-    core.setFailed(`Could not find function to handle ${github.ref}`)
-  }
-  return ''
+  return key === 'pull' ? github.event.pull_request.head.label : github.ref
 }
 export async function analyze(
   workingDirectory: string,
@@ -64,8 +42,7 @@ export async function analyze(
     actorId: github.actor_id,
     repository: github.repository,
     repositoryId: github.repository_id,
-    branch,
-    event: github.event,
+    head: branch,
     analysis,
     dateUtc: new Date().toISOString()
   }
