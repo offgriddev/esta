@@ -27,7 +27,7 @@ function getBranch(github: GithubContext): string {
     }
   }[key]
   if (!keyFunc) {
-    core.setFailed(`Could not find function to handle ${github.ref}`)
+    core.info(`Could not find function to handle ${github.ref}`)
   }
   return ''
 }
