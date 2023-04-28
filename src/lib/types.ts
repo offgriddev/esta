@@ -85,7 +85,7 @@ export type GithubContext = {
   ref: string
   actor: string
   actor_id: string
-  event: string
+  event: { head: { label: string }}
   repository_owner: string
   repository: string
 }
