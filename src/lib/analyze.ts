@@ -5,10 +5,6 @@ import {analyzeTypeScript} from './harvest'
 import { logger } from '../cmds/lib/logger'
 import { GithubContext } from './types'
 
-function getBranch(github: GithubContext): string {
-  const key = github.ref.split('/')[1]
-  return key === 'pull' ? github.event.pull_request.head.label : github.ref
-}
 export async function analyze(
   workingDirectory: string,
   scriptTarget: ts.ScriptTarget,
@@ -32,17 +28,15 @@ export async function analyze(
   logger.info(`total complexity ${total}`)
   const folder = 'complexity-assessment'
   const filename = `${folder}/${github.sha}.json`
-  const branch = getBranch(github)
   const analytics = {
     totalComplexity: total,
     sha: github.sha,
     actor: github.actor,
     ref: github.ref,
-    headRef: github.head_ref,
+    head: github.head_ref,
     actorId: github.actor_id,
     repository: github.repository,
     repositoryId: github.repository_id,
-    head: branch,
     analysis,
     dateUtc: new Date().toISOString()
   }
