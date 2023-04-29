@@ -18,7 +18,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          context: ${{ toJson(github) }}
+          github_token: ${{ github.token }}
           working_directory: src
           ecma_script_target: ES2021
       - name: Print Report

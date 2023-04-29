@@ -60,7 +60,7 @@ jobs:
       - name: Test Local Action
         uses: ./
         with:
-          context: ${{ toJson(github) }}
+          github_token: ${{ github.token }}
           working_directory: src
           ecma_script_target: ES2021
 # build and publish

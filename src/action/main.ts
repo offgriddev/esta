@@ -1,17 +1,17 @@
 import * as core from '@actions/core'
 import {analyze} from '../lib/analyze'
-import {GithubContext} from '../lib/types'
+import {context} from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const githubContext = core.getInput('context')
-    const github: GithubContext = JSON.parse(githubContext)
+    const token = core.getInput('github_token')
 
     const workingDirectory = core.getInput('working_directory') || './'
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
-    const filename = await analyze(workingDirectory, scriptTarget, github)
+    const filename = await analyze(workingDirectory, scriptTarget, token)
 
+    core.info(JSON.stringify(context, undefined, 2))
     // get the files and functions that were modified by the actor
     // get complexity diff
     // get min, max, mean, avg for halstead metrics
