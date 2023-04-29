@@ -1,6 +1,5 @@
 import * as core from '@actions/core'
 import {analyze} from '../lib/analyze'
-import {GithubContext} from '../lib/types'
 import {context} from '@actions/github'
 
 async function run(): Promise<void> {

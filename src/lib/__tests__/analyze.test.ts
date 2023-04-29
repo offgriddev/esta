@@ -71,7 +71,7 @@ describe.skip(__filename, () => {
     const filename = await analyze(
       'workingDirectory',
       ts.ScriptTarget.ES2018,
-      {} as GithubContext
+      'token'
     )
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
@@ -88,7 +88,7 @@ describe.skip(__filename, () => {
     const filename = await analyze(
       'workingDirectory',
       ts.ScriptTarget.ES2018,
-      {} as GithubContext
+      'token'
     )
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
