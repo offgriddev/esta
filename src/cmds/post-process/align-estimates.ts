@@ -3,7 +3,8 @@ import fs from 'fs/promises'
 import {CodeMetrics} from '../../lib/types'
 import {logger} from '../lib/logger'
 
-export const processMetrics = new Command()
+// projects new metrics with original estimates in the cards
+export const alignEstimates = new Command()
   .name('validate-estimate')
   .alias('pm')
   .argument('<github-token>', 'PAT or GITHUB_TOKEN')
