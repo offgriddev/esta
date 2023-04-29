@@ -76,7 +76,7 @@ describe.skip(__filename, () => {
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
   it('calls analyzeTypeScript', async () => {
-    await analyze('workingDirectory', ts.ScriptTarget.ES2018, {} as GithubContext)
+    await analyze('workingDirectory', ts.ScriptTarget.ES2018, 'token')
     expect(analyzeTypeScript).toBeCalledWith(
       ['file1', 'file2'],
       ts.ScriptTarget.ES2018
