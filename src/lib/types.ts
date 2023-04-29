@@ -89,3 +89,7 @@ export type GithubContext = {
   repository_owner: string
   repository: string
 }
+export type ComplexityResult = {
+  source: string
+  metrics: Record<string, HalsteadMetrics & {complexity: number}>
+}

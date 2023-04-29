@@ -5,8 +5,6 @@ description: está takes a temporary state in software construction by performin
 inputs:
   working_directory:
     description: target directory for analysis
-  github_token:
-    description: Github token or PAT
   ecma_script_target:
     description: ScriptTarget as defined in TypeScript (e.g. ES2018, ES2022, ESNext, etc.)
 

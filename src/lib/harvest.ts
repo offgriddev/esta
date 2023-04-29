@@ -2,12 +2,9 @@ import ts from 'typescript'
 import {calculateHalstead} from './halstead'
 import {calculateComplexity} from './complexity'
 import mergeWith from 'lodash.mergewith'
-import {HalsteadMetrics} from './types'
+import {ComplexityResult} from './types'
 
-type ComplexityResult = {
-  source: string
-  metrics: Record<string, HalsteadMetrics & {complexity: number}>
-}
+
 // current support only ts
 export async function analyzeTypeScript(
   sourceFiles: string[],

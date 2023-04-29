@@ -4,12 +4,10 @@ import {context} from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const token = core.getInput('github_token')
-
     const workingDirectory = core.getInput('working_directory') || './'
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
-    const filename = await analyze(workingDirectory, scriptTarget, token)
+    const filename = await analyze(workingDirectory, scriptTarget)
 
     core.info(JSON.stringify(context, undefined, 2))
     // get the files and functions that were modified by the actor
