@@ -34,9 +34,7 @@ export async function analyze(
     actor: context.actor,
     ref: context.ref,
     head: context.payload.pull_request?.head.ref,
-    actorId: context.payload.pull_request?.actor_id,
-    repository: context.payload.pull_request?.repository,
-    repositoryId: context.payload.repository_id,
+    repository: context.repo,
     analysis,
     dateUtc: new Date().toISOString()
   }
