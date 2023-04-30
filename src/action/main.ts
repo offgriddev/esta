@@ -3,7 +3,7 @@ import {analyze} from '../lib/analyze'
 
 async function run(): Promise<void> {
   try {
-    const workingDirectory = core.getInput('working_directory') || './'
+    const workingDirectory = core.getInput('working_directory')
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
     const filename = await analyze(workingDirectory, scriptTarget)
