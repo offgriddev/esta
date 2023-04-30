@@ -10,7 +10,7 @@ export const alignEstimates = new Command()
   .argument('<github-token>', 'PAT or GITHUB_TOKEN')
   .argument('<jira-username>', 'Username for Jira')
   .argument('<jira-pat>', 'PAT for Jira')
-  .action(async token => {
+  .action(async (token: string, username: string, pat: string) => {
     /**
      * pull from local ./data
      * for each commit, pull in data for a jira ticket (if it doesn't exist) [multiple commits per jira ticket]
@@ -25,7 +25,11 @@ export const alignEstimates = new Command()
       const content = await fs.readFile(file, 'utf-8')
       const report: CodeMetrics = JSON.parse(content)
       logger.info(report)
-      // get ticket from Jira
-      // group commits by head branch
+      // parse report.head and pull down jira ticket
+      // get start time as the changelog event fieldId: status, from 11239, to 10071
+      // get end time as the changelog event fieldId: status, to 6
+      // get merge into main immediately after a branch, must take place after
+      // the last instance of the issue commit. If there isn't a merge to main
+      // after the last instance of issue commit, then it went unmerged.
     }
   })

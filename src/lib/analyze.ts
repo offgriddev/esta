@@ -16,10 +16,9 @@ export async function analyze(
   const complexities = analysis.map(({metrics}) => {
     const functions = Object.keys(metrics)
     const functionComplexity = functions.map(func => metrics[func].complexity)
-    const max = Object.values(functionComplexity).reduce((prev, cur) => {
-      return prev > cur ? prev : cur
-    }, 0)
-    return max
+
+    // total these up
+    return functionComplexity.reduce((prev, cur) => +prev + +cur, 0)
   })
 
   /**
