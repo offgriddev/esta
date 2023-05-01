@@ -1,7 +1,7 @@
 import ts from 'typescript'
 import {readdir} from 'fs/promises'
-import { calculateComplexity } from './complexity'
-import { Metric } from './types'
+import {calculateComplexity} from './complexity'
+import {Metric} from './types'
 
 // current support only ts
 export async function analyzeTypeScriptProject(
@@ -13,7 +13,7 @@ export async function analyzeTypeScriptProject(
     const result = await calculateComplexity(file, scriptTarget)
 
     const max = Object.values(result).reduce((prev, cur) => {
-      return prev > cur.complexity? prev : cur.complexity
+      return prev > cur.complexity ? prev : cur.complexity
     }, 0)
 
     metrics.push({

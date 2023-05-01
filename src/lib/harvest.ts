@@ -4,7 +4,6 @@ import {calculateComplexity} from './complexity'
 import mergeWith from 'lodash.mergewith'
 import {ComplexityResult} from './types'
 
-
 // current support only ts
 export async function analyzeTypeScript(
   sourceFiles: string[],

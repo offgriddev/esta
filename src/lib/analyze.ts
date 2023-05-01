@@ -2,13 +2,13 @@ import ts from 'typescript'
 import {mkdir, writeFile} from 'fs/promises'
 import {getSourceFile} from './utils'
 import {analyzeTypeScript} from './harvest'
-import { logger } from '../cmds/lib/logger'
+import {logger} from '../cmds/lib/logger'
 import {context} from '@actions/github'
-import { CodeMetrics, ComplexityResult } from './types'
+import {CodeMetrics} from './types'
 
 export async function analyze(
   workingDirectory: string,
-  scriptTarget: ts.ScriptTarget,
+  scriptTarget: ts.ScriptTarget
 ): Promise<string> {
   const include = /\.ts$/
   const exclude = /\.d.ts|__mocks__|.test.ts/
@@ -18,10 +18,12 @@ export async function analyze(
     const functions = Object.keys(metrics)
     const functionComplexity = functions.map(func => metrics[func].complexity)
 
-    // total these up
-    return functionComplexity.reduce((prev, cur) => +prev + +cur, 0)
+    // the max complexity of a module is the max complexity of its biggest function
+    const max = Object.values(functionComplexity).reduce((prev, cur) => {
+      return prev > cur ? prev : cur
+    }, 0)
+    return max
   })
-
   /**
    * Construct final model
    */

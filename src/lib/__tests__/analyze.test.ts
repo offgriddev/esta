@@ -67,10 +67,7 @@ jest.mock('@actions/core', () => ({
 }))
 describe.skip(__filename, () => {
   it('calls getSourceFile', async () => {
-    const filename = await analyze(
-      'workingDirectory',
-      ts.ScriptTarget.ES2018,
-    )
+    const filename = await analyze('workingDirectory', ts.ScriptTarget.ES2018)
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
   it('calls analyzeTypeScript', async () => {
@@ -83,10 +80,7 @@ describe.skip(__filename, () => {
   it('makes a directory', () => {})
   it('writes a file', () => {})
   it('returns the filename', async () => {
-    const filename = await analyze(
-      'workingDirectory',
-      ts.ScriptTarget.ES2018,
-    )
+    const filename = await analyze('workingDirectory', ts.ScriptTarget.ES2018)
     expect(filename).toEqual('complexity-assessment/sha.json')
   })
 })

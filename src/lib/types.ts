@@ -37,13 +37,13 @@ export type Player = {
 }
 
 export type Card = {
-    complexity: number;
-    key: string;
+  complexity: number
+  key: string
 }
 
 export type EstimateEvidence = {
-  total: number,
-  cards: Card[] 
+  total: number
+  cards: Card[]
 }
 
 export type PlayerCardAssignment = {
@@ -72,7 +72,7 @@ export type CodeMetrics = {
   sha: string
   actor: string
   head: string
-  repository: { owner: string; repo: string; }
+  repository: {owner: string; repo: string}
   ref: string
   analysis: ComplexityResult[]
   dateUtc: string

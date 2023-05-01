@@ -1,9 +1,0 @@
-﻿Summary,Key,Status Date,Labels,Epic Name,Epic Colour,Epic Link,Story Points
-Build ensure-activate-subscription-lambda in Services,PLATEXP-4392,,BLL,,,PLATEXP-2401,1
-Build handle-subscription-lambda in Services,PLATEXP-4389,,BLL,,,PLATEXP-2401,2
-Build check-to-deactivate-subscription-lambda in Services,PLATEXP-3649,,BLL,,,PLATEXP-2401,1
-Build remove-account-from-subscription in Services,PLATEXP-3648,,BLL,,,PLATEXP-2401,1
-Build add-account-to-subscription-lambda in Services,PLATEXP-3647,,BLL,,,PLATEXP-2401,1
-Build create-subscription-lambda in Services,PLATEXP-3646,,BLL,,,PLATEXP-2401,1
-Build handle-customer-metadata-change-lambda in Services,PLATEXP-3645,,BLL,,,PLATEXP-2401,5
-Build check-for-subscription-lambda in Services,PLATEXP-2788,,BLL,,,PLATEXP-2401,2

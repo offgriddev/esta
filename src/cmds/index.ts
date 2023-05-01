@@ -9,6 +9,8 @@ import {calculateHalsteadCommand} from './analyze-typescript/calculate-halstead'
 import {calculateCodeMetricsCommand} from './analyze-typescript/calculate-merge'
 import {calculateProjectComplexityCommand} from './analyze-typescript/calculate-project-complexity'
 import {analyzeCodeCommand} from './analyze-typescript/analyze'
+import {printCommits} from './post-process/print-commits'
+import {getMetricCommand} from './post-process/get-metric'
 
 const program = new Command()
   .name('estamaton')
@@ -22,5 +24,7 @@ const program = new Command()
   .addCommand(calculateCodeMetricsCommand)
   .addCommand(calculateProjectComplexityCommand)
   .addCommand(analyzeCodeCommand)
+  .addCommand(printCommits)
+  .addCommand(getMetricCommand)
 
 program.parse()

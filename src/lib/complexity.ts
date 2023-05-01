@@ -32,9 +32,9 @@ const increasesComplexity = (node: ts.Node): boolean => {
 
 export function calculateFromSource(
   source: ts.SourceFile
-): Record<string, { complexity: number }> {
+): Record<string, {complexity: number}> {
   let complexity = 0
-  const output: Record<string, { complexity: number }> = {}
+  const output: Record<string, {complexity: number}> = {}
   ts.forEachChild(source, function cb(node) {
     if (isFunctionWithBody(node)) {
       const old = complexity
@@ -56,7 +56,7 @@ export function calculateFromSource(
 export async function calculateComplexity(
   filePath: string,
   scriptTarget: ts.ScriptTarget
-): Promise<Record<string, { complexity: number }>> {
+): Promise<Record<string, {complexity: number}>> {
   const sourceText = await readFile(filePath)
   const source = ts.createSourceFile(
     filePath,
