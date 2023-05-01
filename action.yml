@@ -7,6 +7,8 @@ inputs:
     description: target directory for analysis
   ecma_script_target:
     description: ScriptTarget as defined in TypeScript (e.g. ES2018, ES2022, ESNext, etc.)
+  event:
+    description: this event
 
 outputs:
   card-url:

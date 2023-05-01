@@ -20,7 +20,7 @@ jobs:
         with:
           working_directory: src
           ecma_script_target: ES2021
-          commits: ${{ toJson(github.event) }}
+          event: ${{ toJson(github.event) }}
 
       - name: Print Report
         shell: bash

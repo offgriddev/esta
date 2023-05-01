@@ -18,6 +18,7 @@ export const alignEstimates = new Command()
      * - developer speed
      * - project delivery speed
      * - pull jira information by ticket
+     *
      */
 
     const files = await fs.readdir('./data/commit-metrics')
