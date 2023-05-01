@@ -84,18 +84,20 @@ export const getDeveloperStatistics = new Command()
       const ordered = contents.sort((a, b) =>
         a.dateUtc === b.dateUtc ? 0 : a.dateUtc > b.dateUtc ? 1 : -1
       )
-      const shaIndex = contents.findIndex(val => val.sha)
+      const shaIndex = contents.findIndex(val => val.sha === sha)
+      logger.info({ordered, shaIndex})
       // find previous commit by actor and
       // now, this may or may not be the originating commit.
       // may in the future need access to already computed commits
+      return JSON.parse('{}')
     }
 
-    const pr: CodeMetrics = getMergeCommit(options.sha)
+    const pr: CodeMetrics = await findPrCommit(options.sha)
 
     // get files, parse, and sort by jira
     const result = {
       startDate,
-      endDate: mergeCommit.dateUtc,
+      endDate: pr.dateUtc,
       estimate,
       duration: '' // from beginning to merge
     }
