@@ -5,7 +5,7 @@ async function run(): Promise<void> {
   try {
     const workingDirectory = core.getInput('working_directory') || './'
     const event = core.getInput('event')
-    core.info(JSON.stringify(event, undefined, 2))
+    core.info(JSON.parse(event))
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
     const filename = await analyze(workingDirectory, scriptTarget)
