@@ -18,7 +18,7 @@ export async function analyze(
     const functions = Object.keys(metrics)
     const functionComplexity = functions.map(func => metrics[func].complexity)
 
-    // the max complexity of a module is the max complexity of its biggest function
+    // axiom: the complexity of a module is the highest complexity of any of its functions
     const max = Object.values(functionComplexity).reduce((prev, cur) => {
       return prev > cur ? prev : cur
     }, 0)

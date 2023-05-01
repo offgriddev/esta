@@ -18,9 +18,10 @@ jobs:
         id: test-action
         uses: ./
         with:
-          github_token: ${{ github.token }}
           working_directory: src
           ecma_script_target: ES2021
+          commits: ${{ toJson(github.event) }}
+
       - name: Print Report
         shell: bash
         run: cat ${{ steps.test-action.outputs.export_filename }}

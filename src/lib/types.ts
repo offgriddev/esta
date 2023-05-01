@@ -13,6 +13,7 @@ export type HalsteadMetrics =
   | Record<string, unknown>
 
 export type OpExpression = {
+  items?: (string | number)[]
   total: number
   _unique: Set<string | number>
   unique: number

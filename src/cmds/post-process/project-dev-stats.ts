@@ -7,6 +7,7 @@ import fs from 'fs/promises'
 import {Command} from 'commander'
 import {CodeMetrics} from '../../lib/types'
 import {ChangeLogItem, getIssue, getIssueChangelog} from '../../lib/jira'
+import {logger} from '../lib/logger'
 
 type StatsParams = {
   sha: string
@@ -33,6 +34,11 @@ export const getDeveloperStatistics = new Command()
   .action(async (options: StatsParams) => {
     const data = await fs.readFile(`data/${options.sha}.json`, 'utf-8')
     const metrics: CodeMetrics = JSON.parse(data)
+
+    // the order is off here. We must first identify which sha is associated with
+    // the commit related to the merge
+
+    // this can be done through the push_event.commits...brilliant!
     const jiraIssueKey = metrics.head.split('/')[1]
     const issueP = getIssue({
       username: options.jiraUsername,
@@ -55,13 +61,43 @@ export const getDeveloperStatistics = new Command()
     }
     const [issue, changelog] = await Promise.all([issueP, changelogP])
     const estimate = issue[options.estimateField]
-    const {created: startDate} = findChangeLog(changelog.values, '10071')
-    // const {created} = changelog.values.find(({items}) =>
-    //   items.find(item => item.to === '10071')
-    // )
+    const {created: startDate} = findChangeLog(changelog.values, '10071') // needs to be options
 
+    // if the commit is a merge into main, head will be undefined
+    const isMainMerge = metrics.ref === 'refs/heads/main'
+
+    if (!isMainMerge) {
+      logger.info(
+        `SHA ${options.sha} is not for a merge into main. Can only calculate delivery on a final merge into main.`
+      )
+      return
+    }
+
+    async function findPrCommit(sha: string): Promise<CodeMetrics> {
+      const dir = './data/commit-metrics'
+      const files = await fs.readdir(dir)
+      const contents: CodeMetrics[] = []
+      for (const file of files) {
+        const content = await fs.readFile(`${dir}/${file}.json`, 'utf-8')
+        contents.push(JSON.parse(content))
+      }
+      const ordered = contents.sort((a, b) =>
+        a.dateUtc === b.dateUtc ? 0 : a.dateUtc > b.dateUtc ? 1 : -1
+      )
+      const shaIndex = contents.findIndex(val => val.sha)
+      // find previous commit by actor and
+      // now, this may or may not be the originating commit.
+      // may in the future need access to already computed commits
+    }
+
+    const pr: CodeMetrics = getMergeCommit(options.sha)
+
+    // get files, parse, and sort by jira
     const result = {
       startDate,
-      originalEstimate: estimate
+      endDate: mergeCommit.dateUtc,
+      estimate,
+      duration: '' // from beginning to merge
     }
+    logger.info(result)
   })

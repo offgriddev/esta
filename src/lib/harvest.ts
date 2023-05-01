@@ -9,7 +9,7 @@ export async function analyzeTypeScript(
   sourceFiles: string[],
   scriptTarget: ts.ScriptTarget
 ): Promise<ComplexityResult[]> {
-  const metrics = []
+  const metrics: ComplexityResult[] = []
   for (const filename of sourceFiles) {
     const halsteadMetrics = await calculateHalstead(
       filename,

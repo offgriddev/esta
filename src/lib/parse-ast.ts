@@ -30,20 +30,21 @@ export const getOperatorsAndOperands = (node: ts.Node): OperationMetrics => {
     if (isAnOperand(currentNode)) {
       output.operands.total++
       output.operands._unique.add(
-        (currentNode as ts.Identifier).text ||
-          (currentNode as ts.Identifier).escapedText?.toString() ||
-          ''
+        (currentNode as ts.Identifier).escapedText || ''
       )
     } else if (isAnOperator(currentNode)) {
       output.operators.total++
       output.operators._unique.add(
-        (currentNode as ts.Identifier).text || currentNode.kind
+        (currentNode as ts.Identifier).escapedText ||
+          ts.SyntaxKind[currentNode.kind]
       )
     }
     ts.forEachChild(currentNode, cb)
   })
   output.operands.unique = output.operands._unique.size
+  output.operands.items = Array.from(output.operands._unique)
   output.operators.unique = output.operators._unique.size
+  output.operators.items = Array.from(output.operators._unique)
 
   return output
 }
