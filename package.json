@@ -4,6 +4,9 @@
   "main": "lib/action/main.js",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": "^18"
+  },
   "scripts": {
     "cli": "ts-node src/cmds/index.ts",
     "build": "tsc -p tsconfig.build.json",
@@ -35,7 +38,8 @@
     "lodash.reduce": "^4.6.0",
     "pino": "^8.11.0",
     "ts-complex": "^1.0.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "undici": "^5.22.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",

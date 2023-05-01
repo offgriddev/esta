@@ -71,24 +71,13 @@ export type CodeMetrics = {
   totalComplexity: number
   sha: string
   actor: string
-  actorId: string
-  branch: string
+  head: string
+  repository: { owner: string; repo: string; }
   ref: string
+  analysis: ComplexityResult[]
+  dateUtc: string
 }
 
-export type GithubContext = {
-  repository_id: string
-  token: string
-  head_ref: string
-  action: string
-  sha: string
-  ref: string
-  actor: string
-  actor_id: string
-  event: { pull_request: { head: { label: string } } }
-  repository_owner: string
-  repository: string
-}
 export type ComplexityResult = {
   source: string
   metrics: Record<string, HalsteadMetrics & {complexity: number}>

@@ -4,6 +4,7 @@ import {getSourceFile} from './utils'
 import {analyzeTypeScript} from './harvest'
 import { logger } from '../cmds/lib/logger'
 import {context} from '@actions/github'
+import { CodeMetrics, ComplexityResult } from './types'
 
 export async function analyze(
   workingDirectory: string,
@@ -28,7 +29,7 @@ export async function analyze(
   logger.info(`total complexity ${total}`)
   const folder = 'complexity-assessment'
   const filename = `${folder}/${context.sha}.json`
-  const analytics = {
+  const analytics: CodeMetrics = {
     totalComplexity: total,
     sha: context.sha,
     actor: context.actor,

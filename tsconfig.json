@@ -6,8 +6,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "lib",
-    "lib": ["esnext"]
+    "outDir": "lib"
   },
   "include": ["src/lib", "src/action", "src/cmds"],
   "exclude": ["node_modules"]
