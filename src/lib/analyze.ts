@@ -5,7 +5,7 @@ import {analyzeTypeScript} from './harvest'
 import {logger} from '../cmds/lib/logger'
 import {context} from '@actions/github'
 import {CodeMetrics} from './types'
-import {PushEvent, getHeadRefForPR} from './github'
+import {PushEvent, getPushDetails} from './github'
 
 export async function analyze(
   workingDirectory: string,
@@ -36,19 +36,28 @@ export async function analyze(
   const filename = `${folder}/${context.sha}.json`
 
   // get the first commit in the event, which should be the merge commit
-
-  const analytics: CodeMetrics = {
+  const baseMetrics = {
     totalComplexity: total,
     sha: context.sha,
-    actor: context.actor,
     ref: context.ref,
-    head:
-      context.payload.pull_request?.head.ref ||
-      (await getHeadRefForPR(githubToken, event as PushEvent)),
     repository: context.repo,
     analysis,
     dateUtc: new Date().toISOString()
   }
+
+  const prBase = {
+    head: context.payload.pull_request?.head.ref,
+    actor: context.actor
+  }
+  const pushBase = await getPushDetails(githubToken, event as PushEvent)
+  // pull_request will be empty on a push
+  const isPushRequest = !!pushBase
+  const analytics: CodeMetrics = isPushRequest
+    ? {
+        ...pushBase,
+        ...baseMetrics
+      }
+    : {...prBase, ...baseMetrics}
   await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
 

@@ -73,6 +73,7 @@ export type CodeMetrics = {
   sha: string
   actor: string
   head: string
+  actorName?: string
   repository: {owner: string; repo: string}
   ref: string
   analysis: ComplexityResult[]
