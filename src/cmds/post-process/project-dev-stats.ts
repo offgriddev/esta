@@ -35,34 +35,6 @@ export const getDeveloperStatistics = new Command()
     const data = await fs.readFile(`data/${options.sha}.json`, 'utf-8')
     const metrics: CodeMetrics = JSON.parse(data)
 
-    // the order is off here. We must first identify which sha is associated with
-    // the commit related to the merge
-
-    // this can be done through the push_event.commits...brilliant!
-    const jiraIssueKey = metrics.head.split('/')[1]
-    const issueP = getIssue({
-      username: options.jiraUsername,
-      password: options.jiraPassword,
-      host: options.jiraHost,
-      key: jiraIssueKey
-    })
-    const changelogP = getIssueChangelog({
-      username: options.jiraUsername,
-      password: options.jiraPassword,
-      host: options.jiraHost,
-      key: jiraIssueKey
-    })
-    function findChangeLog(values: ChangeLogItem[], id: string): ChangeLogItem {
-      for (const log of values) {
-        const found = log.items.find(item => item.to === id)
-        if (found) return log
-      }
-      return {} as ChangeLogItem
-    }
-    const [issue, changelog] = await Promise.all([issueP, changelogP])
-    const estimate = issue[options.estimateField]
-    const {created: startDate} = findChangeLog(changelog.values, '10071') // needs to be options
-
     // if the commit is a merge into main, head will be undefined
     const isMainMerge = metrics.ref === 'refs/heads/main'
 
@@ -94,6 +66,30 @@ export const getDeveloperStatistics = new Command()
 
     const pr: CodeMetrics = await findPrCommit(options.sha)
 
+    // this can be done through the push_event.commits...brilliant!
+    const jiraIssueKey = metrics.head.split('/')[1]
+    const issueP = getIssue({
+      username: options.jiraUsername,
+      password: options.jiraPassword,
+      host: options.jiraHost,
+      key: jiraIssueKey
+    })
+    const changelogP = getIssueChangelog({
+      username: options.jiraUsername,
+      password: options.jiraPassword,
+      host: options.jiraHost,
+      key: jiraIssueKey
+    })
+    function findChangeLog(values: ChangeLogItem[], id: string): ChangeLogItem {
+      for (const log of values) {
+        const found = log.items.find(item => item.to === id)
+        if (found) return log
+      }
+      return {} as ChangeLogItem
+    }
+    const [issue, changelog] = await Promise.all([issueP, changelogP])
+    const estimate = issue[options.estimateField]
+    const {created: startDate} = findChangeLog(changelog.values, '10071') // needs to be options
     // get files, parse, and sort by jira
     const result = {
       startDate,
