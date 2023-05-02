@@ -19,6 +19,7 @@ jobs:
         id: test-action
         uses: ./
         with:
+          github_token: ${{ github.token }}
           working_directory: src
           ecma_script_target: ES2021
           event: ${{ toJson(github.event) }}
