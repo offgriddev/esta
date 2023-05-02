@@ -54,10 +54,10 @@ export async function analyze(
   const isPushRequest = !!pushBase
   const analytics: CodeMetrics = isPushRequest
     ? {
-        ...baseMetrics,
-        ...pushBase
+        ...pushBase,
+        ...baseMetrics
       }
-    : {...baseMetrics, ...prBase}
+    : {...prBase, ...baseMetrics}
   await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
 
