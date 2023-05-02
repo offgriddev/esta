@@ -42,9 +42,9 @@ export async function analyze(
     sha: context.sha,
     actor: context.actor,
     ref: context.ref,
-    head: !context.ref.includes('head')
-      ? context.payload.pull_request?.head.ref
-      : await getHeadRefForPR(githubToken, event as PushEvent),
+    head:
+      context.payload.pull_request?.head.ref ||
+      (await getHeadRefForPR(githubToken, event as PushEvent)),
     repository: context.repo,
     analysis,
     dateUtc: new Date().toISOString()

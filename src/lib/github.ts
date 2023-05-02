@@ -27,7 +27,6 @@ export async function getHeadRefForPR(
 ): Promise<string | undefined> {
   const github = getOctokit(githubToken, context.repo)
   const {commits} = event
-  logger.info({commits})
   const prs = await github.rest.pulls.list(context.repo)
   for (const commit of commits) {
     const found = prs.data.find(pr => pr.merge_commit_sha === commit.id)
