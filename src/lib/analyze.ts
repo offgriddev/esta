@@ -5,7 +5,7 @@ import {analyzeTypeScript} from './harvest'
 import {logger} from '../cmds/lib/logger'
 import {context} from '@actions/github'
 import {CodeMetrics} from './types'
-import {PushDetails, PushEvent, getPushDetails} from './github'
+import {PushEvent, getPushDetails} from './github'
 
 export async function analyze(
   workingDirectory: string,
