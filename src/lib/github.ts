@@ -1,4 +1,4 @@
-import {getOctokit} from '@actions/github'
+import {context, getOctokit} from '@actions/github'
 import {logger} from '../cmds/lib/logger'
 
 export type PushEvent = {
@@ -25,10 +25,10 @@ export async function getHeadRefForPR(
   githubToken: string,
   event: PushEvent
 ): Promise<string | undefined> {
-  const github = getOctokit(githubToken)
+  const github = getOctokit(githubToken, context.repo)
   const {commits} = event
   logger.info({commits})
-  const prs = await github.rest.pulls.list()
+  const prs = await github.rest.pulls.list(context.repo)
   for (const commit of commits) {
     const found = prs.data.find(pr => pr.merge_commit_sha === commit.id)
     if (found) return found?.head.ref
