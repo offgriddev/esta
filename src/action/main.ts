@@ -6,7 +6,6 @@ async function run(): Promise<void> {
     const workingDirectory = core.getInput('working_directory') || './'
     const githubToken = core.getInput('github_token')
     const event = core.getInput('event')
-    core.info(JSON.parse(event))
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
     const filename = await analyze(
@@ -23,7 +22,6 @@ async function run(): Promise<void> {
     core.setOutput('export_filename', filename)
   } catch (error) {
     core.setFailed((error as Error).message)
-    core.setFailed(`${(error as Error).stack}`)
   }
 }
 
