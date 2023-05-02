@@ -3,6 +3,8 @@ name: ESTimate Automation (está)
 description: está takes a temporary state in software construction by performing static analysis on the codebase and uploads it to S3 for future analysis
 
 inputs:
+  github_token:
+    description: GitHub token
   working_directory:
     description: target directory for analysis
   ecma_script_target:
