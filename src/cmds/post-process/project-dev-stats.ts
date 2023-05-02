@@ -1,13 +1,15 @@
 /**
  * To gather developer statistics, we need first to have access to the jira issue
- * commit be39d337d795f6b46458ebd692106ee6d3e02e09
+ * commit 02f78ac9e8792bdbf15b956712401665a47ebb85
  */
 
 import fs from 'fs/promises'
 import {Command} from 'commander'
+import {differenceInHours} from 'date-fns'
 import {CodeMetrics} from '../../lib/types'
 import {ChangeLogItem, getIssue, getIssueChangelog} from '../../lib/jira'
 import {logger} from '../lib/logger'
+import {getCommitMetrics} from '../../lib/fs'
 
 type StatsParams = {
   sha: string
@@ -16,7 +18,14 @@ type StatsParams = {
   jiraHost: string
   estimateField: string
 }
-
+function findChangeLog(values: ChangeLogItem[], id: string): ChangeLogItem {
+  const ids = id.split(',')
+  for (const log of values) {
+    const found = log.items.find(item => ids.includes(item.to))
+    if (found) return log
+  }
+  return {} as ChangeLogItem
+}
 export const getDeveloperStatistics = new Command()
   .name('get-developer-stats')
   .alias('gds')
@@ -32,7 +41,10 @@ export const getDeveloperStatistics = new Command()
     'Custom field where estimate is stored on model'
   )
   .action(async (options: StatsParams) => {
-    const data = await fs.readFile(`data/${options.sha}.json`, 'utf-8')
+    const data = await fs.readFile(
+      `data/commit-metrics/${options.sha}.json`,
+      'utf-8'
+    )
     const metrics: CodeMetrics = JSON.parse(data)
 
     // if the commit is a merge into main, head will be undefined
@@ -45,29 +57,7 @@ export const getDeveloperStatistics = new Command()
       return
     }
 
-    async function findPrCommit(sha: string): Promise<CodeMetrics> {
-      const dir = './data/commit-metrics'
-      const files = await fs.readdir(dir)
-      const contents: CodeMetrics[] = []
-      for (const file of files) {
-        const content = await fs.readFile(`${dir}/${file}.json`, 'utf-8')
-        contents.push(JSON.parse(content))
-      }
-      const ordered = contents.sort((a, b) =>
-        a.dateUtc === b.dateUtc ? 0 : a.dateUtc > b.dateUtc ? 1 : -1
-      )
-      const shaIndex = contents.findIndex(val => val.sha === sha)
-      logger.info({ordered, shaIndex})
-      // find previous commit by actor and
-      // now, this may or may not be the originating commit.
-      // may in the future need access to already computed commits
-      return JSON.parse('{}')
-    }
-
-    const pr: CodeMetrics = await findPrCommit(options.sha)
-
-    // this can be done through the push_event.commits...brilliant!
-    const jiraIssueKey = metrics.head.split('/')[1]
+    const jiraIssueKey = metrics.head.split('/')[1].replace('_', '-')
     const issueP = getIssue({
       username: options.jiraUsername,
       password: options.jiraPassword,
@@ -80,22 +70,34 @@ export const getDeveloperStatistics = new Command()
       host: options.jiraHost,
       key: jiraIssueKey
     })
-    function findChangeLog(values: ChangeLogItem[], id: string): ChangeLogItem {
-      for (const log of values) {
-        const found = log.items.find(item => item.to === id)
-        if (found) return log
-      }
-      return {} as ChangeLogItem
-    }
+
     const [issue, changelog] = await Promise.all([issueP, changelogP])
-    const estimate = issue[options.estimateField]
-    const {created: startDate} = findChangeLog(changelog.values, '10071') // needs to be options
-    // get files, parse, and sort by jira
+    const estimate = issue.fields[options.estimateField]
+    const {created: startDate} = findChangeLog(changelog.values, '3,10071') // needs to be options
+    const durationInDays =
+      Math.round(
+        (differenceInHours(Date.parse(metrics.dateUtc), Date.parse(startDate)) /
+          24) *
+          100
+      ) / 100
+    // get previous push to main and compare complexity
+    const commits = await getCommitMetrics()
+    const filteredCommits = commits.filter(
+      commit => commit.ref === 'refs/heads/main'
+    )
+    const shaIndex = filteredCommits.findIndex(
+      commit => commit.sha === metrics.sha
+    )
+    const commit = filteredCommits[shaIndex + 1]
     const result = {
+      jiraKey: jiraIssueKey,
+      commit: metrics.sha,
+      author: metrics.actor,
       startDate,
-      endDate: pr.dateUtc,
+      endDate: metrics.dateUtc,
       estimate,
-      duration: '' // from beginning to merge
+      actual: metrics.totalComplexity - commit.totalComplexity,
+      durationInDays
     }
     logger.info(result)
   })

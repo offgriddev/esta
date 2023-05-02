@@ -21,21 +21,27 @@ type JiraIssue =
       fields: {
         parent?: JiraIssue
         resolution: Resolution
-      }
+      } & Record<string, string>
     } & Record<string, number | string>
 function getHeaders(
   username: string,
   password: string
 ): Record<string, string> {
+  const creds = Buffer.from(`${username}:${password}`, 'utf-8').toString(
+    'base64'
+  )
   return {
-    Authentication: `Basic ${username}:${password}`,
-    'Content-Type': 'application/json'
+    authorization: `Basic ${creds}`,
+    'Content-Type': 'application/json',
+    Accept: '*/*'
   }
 }
 
 export async function getIssue(config: GetIssueConfig): Promise<JiraIssue> {
-  const res = await request(`${config.host}/rest/api/3/issue/${config.key}`, {
-    headers: getHeaders(config.username, config.password)
+  const headers = getHeaders(config.username, config.password)
+  const url = `${config.host}/rest/api/3/issue/${config.key}`
+  const res = await request(url, {
+    headers
   })
 
   return res.body.json()

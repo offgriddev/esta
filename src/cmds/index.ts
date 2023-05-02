@@ -11,6 +11,7 @@ import {calculateProjectComplexityCommand} from './analyze-typescript/calculate-
 import {analyzeCodeCommand} from './analyze-typescript/analyze'
 import {printCommits} from './post-process/print-commits'
 import {getMetricCommand} from './post-process/get-metric'
+import {getDeveloperStatistics} from './post-process/project-dev-stats'
 
 const program = new Command()
   .name('estamaton')
@@ -26,5 +27,6 @@ const program = new Command()
   .addCommand(analyzeCodeCommand)
   .addCommand(printCommits)
   .addCommand(getMetricCommand)
+  .addCommand(getDeveloperStatistics)
 
 program.parse()
