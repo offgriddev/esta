@@ -10,7 +10,8 @@ import {getHeadRefForPR} from './github'
 export async function analyze(
   workingDirectory: string,
   scriptTarget: ts.ScriptTarget,
-  githubToken: string
+  githubToken: string,
+  event: unknown
 ): Promise<string> {
   const include = /\.ts$/
   const exclude = /\.d.ts|__mocks__|.test.ts/
@@ -34,6 +35,8 @@ export async function analyze(
   const folder = 'complexity-assessment'
   const filename = `${folder}/${context.sha}.json`
 
+  // get the first commit in the event, which should be the merge commit
+
   // in order to retrieve the head branch related to the
   // merge commit, you need to get the pull request from the api
   const analytics: CodeMetrics = {
@@ -43,7 +46,7 @@ export async function analyze(
     ref: context.ref,
     head:
       context.payload.pull_request?.head.ref ||
-      (await getHeadRefForPR(githubToken, config.sha)),
+      (await getHeadRefForPR(githubToken)),
     repository: context.repo,
     analysis,
     dateUtc: new Date().toISOString()

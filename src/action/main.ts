@@ -9,7 +9,12 @@ async function run(): Promise<void> {
     core.info(JSON.parse(event))
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scriptTarget: any = core.getInput('ecma_script_target')
-    const filename = await analyze(workingDirectory, scriptTarget, githubToken)
+    const filename = await analyze(
+      workingDirectory,
+      scriptTarget,
+      githubToken,
+      event
+    )
 
     // get the files and functions that were modified by the actor
     // get complexity diff
