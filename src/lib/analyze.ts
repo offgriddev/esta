@@ -5,7 +5,7 @@ import {analyzeTypeScript} from './harvest'
 import {logger} from '../cmds/lib/logger'
 import {context} from '@actions/github'
 import {CodeMetrics} from './types'
-import {getHeadRefForPR} from './github'
+import {PushEvent, getHeadRefForPR} from './github'
 
 export async function analyze(
   workingDirectory: string,
@@ -37,8 +37,6 @@ export async function analyze(
 
   // get the first commit in the event, which should be the merge commit
 
-  // in order to retrieve the head branch related to the
-  // merge commit, you need to get the pull request from the api
   const analytics: CodeMetrics = {
     totalComplexity: total,
     sha: context.sha,
@@ -46,7 +44,7 @@ export async function analyze(
     ref: context.ref,
     head:
       context.payload.pull_request?.head.ref ||
-      (await getHeadRefForPR(githubToken)),
+      (await getHeadRefForPR(githubToken, event as PushEvent)),
     repository: context.repo,
     analysis,
     dateUtc: new Date().toISOString()

@@ -64,10 +64,7 @@ export const getDeveloperStatistics = new Command()
       return JSON.parse('{}')
     }
 
-    const pr: CodeMetrics = await findPrMergeCommit(options.sha)
-
-    // the order is off here. We must first identify which sha is associated with
-    // the commit related to the merge
+    const pr: CodeMetrics = await findPrCommit(options.sha)
 
     // this can be done through the push_event.commits...brilliant!
     const jiraIssueKey = metrics.head.split('/')[1]
