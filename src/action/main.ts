@@ -21,7 +21,7 @@ async function run(): Promise<void> {
     // get min, max, mean, avg for complexity
     core.setOutput('export_filename', filename)
   } catch (error) {
-    core.setFailed((error as Error).message)
+    core.info((error as Error).message)
   }
 }
 
