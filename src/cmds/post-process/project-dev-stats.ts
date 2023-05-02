@@ -10,6 +10,7 @@ import {CodeMetrics} from '../../lib/types'
 import {ChangeLogItem, getIssue, getIssueChangelog} from '../../lib/jira'
 import {logger} from '../lib/logger'
 import {getCommitMetrics} from '../../lib/fs'
+import {getRealisticDuration} from '../../lib/dates'
 
 type StatsParams = {
   sha: string
@@ -74,12 +75,6 @@ export const getDeveloperStatistics = new Command()
     const [issue, changelog] = await Promise.all([issueP, changelogP])
     const estimate = issue.fields[options.estimateField]
     const {created: startDate} = findChangeLog(changelog.values, '3,10071') // needs to be options
-    const durationInDays =
-      Math.round(
-        (differenceInHours(Date.parse(metrics.dateUtc), Date.parse(startDate)) /
-          24) *
-          100
-      ) / 100
     // get previous push to main and compare complexity
     const commits = await getCommitMetrics()
     const filteredCommits = commits.filter(
@@ -97,7 +92,7 @@ export const getDeveloperStatistics = new Command()
       endDate: metrics.dateUtc,
       estimate,
       actual: metrics.totalComplexity - commit.totalComplexity,
-      durationInDays
+      duration: getRealisticDuration(startDate, metrics.dateUtc)
     }
     logger.info(result)
   })
