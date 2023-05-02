@@ -5,7 +5,7 @@ import {analyzeTypeScript} from './harvest'
 import {logger} from '../cmds/lib/logger'
 import {context} from '@actions/github'
 import {CodeMetrics} from './types'
-import {PushEvent, getHeadRefForPR} from './github'
+import {PushEvent, getHeadRefForPR, getPRInfo} from './github'
 
 export async function analyze(
   workingDirectory: string,
@@ -37,14 +37,15 @@ export async function analyze(
 
   // get the first commit in the event, which should be the merge commit
 
+  const prInfo = getPRInfo(githubToken, event as PushEvent)
+
   const analytics: CodeMetrics = {
     totalComplexity: total,
     sha: context.sha,
     actor: context.actor,
     ref: context.ref,
-    head:
-      context.payload.pull_request?.head.ref ||
-      (await getHeadRefForPR(githubToken, event as PushEvent)),
+    head: context.payload.pull_request?.head.ref,
+    ...prInfo,
     repository: context.repo,
     analysis,
     dateUtc: new Date().toISOString()
